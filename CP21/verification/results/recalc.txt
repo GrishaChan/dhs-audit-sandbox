@@ -1,0 +1,4 @@
+0 Moi_kollektsii_CP20.html {"kindSwitchMs":47,"themeSwitchMs":259.8}
+0 app.html       {"kindSwitchMs":51.6,"themeSwitchMs":267.9}
+1 Moi_kollektsii_CP20.html {"kindSwitchMs":49.7,"themeSwitchMs":257.8}
+1 app.html       {"kindSwitchMs":49.7,"themeSwitchMs":257.4}

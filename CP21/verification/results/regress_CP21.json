@@ -1,0 +1,958 @@
+{
+ "file": "/home/user/dhs-audit-sandbox/work21/app.html",
+ "total": 190,
+ "pass": 190,
+ "fail": 0,
+ "results": [
+  {
+   "name": "file:// autonomous open: app initialised, no external requests",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "name": "runtime record counts 496/500/500 and tab counters",
+   "ok": true,
+   "detail": "{\"n\":[496,500,500],\"tabs\":[\"496\",\"500\",\"500\"]}"
+  },
+  {
+   "name": "201 embedded book downloads shown and stored; films/songs 0",
+   "ok": true,
+   "detail": "{\"tile\":\"201\",\"live\":201,\"stored\":201,\"films\":0,\"songs\":0}"
+  },
+  {
+   "name": "clean initial progress and empty history",
+   "ok": true,
+   "detail": "{\"marks\":0,\"events\":0}"
+  },
+  {
+   "name": "unique ids and every aria-controls/aria-labelledby target exists",
+   "ok": true,
+   "detail": "{\"dup\":[],\"miss\":[]}"
+  },
+  {
+   "name": "inactive catalogs are inert, hidden from a11y, not hit-testable",
+   "ok": true,
+   "detail": "{\"inert\":true,\"hitInCurrent\":true}"
+  },
+  {
+   "name": "idle pre-render: other catalogs have first 24 cards before any swipe",
+   "ok": true,
+   "detail": "[24,24]"
+  },
+  {
+   "name": "hidden catalogs do not inflate page scroll height (filter «Брошено»)",
+   "ok": true,
+   "detail": "{\"sh\":900,\"ih\":900,\"stage\":709}"
+  },
+  {
+   "name": "desktop: stats opens on books from its catalog",
+   "ok": true,
+   "detail": "{\"sheet\":\"books\",\"sel\":[\"books\"],\"catalog\":\"books\"}"
+  },
+  {
+   "name": "desktop: history opens on books from its catalog",
+   "ok": true,
+   "detail": "{\"sheet\":\"books\",\"sel\":[\"books\"],\"catalog\":\"books\"}"
+  },
+  {
+   "name": "desktop: stats opens on films from its catalog",
+   "ok": true,
+   "detail": "{\"sheet\":\"films\",\"sel\":[\"films\"],\"catalog\":\"films\"}"
+  },
+  {
+   "name": "desktop: history opens on films from its catalog",
+   "ok": true,
+   "detail": "{\"sheet\":\"films\",\"sel\":[\"films\"],\"catalog\":\"films\"}"
+  },
+  {
+   "name": "desktop: stats opens on songs from its catalog",
+   "ok": true,
+   "detail": "{\"sheet\":\"songs\",\"sel\":[\"songs\"],\"catalog\":\"songs\"}"
+  },
+  {
+   "name": "desktop: history opens on songs from its catalog",
+   "ok": true,
+   "detail": "{\"sheet\":\"songs\",\"sel\":[\"songs\"],\"catalog\":\"songs\"}"
+  },
+  {
+   "name": "desktop: entry during running catalog transition uses the chosen target",
+   "ok": true,
+   "detail": "songs"
+  },
+  {
+   "name": "desktop: menu stays open when opened during a transition",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "desktop: internal category switch does not change the catalog or the other sheet",
+   "ok": true,
+   "detail": "{\"a\":\"films\",\"h\":\"films\"}"
+  },
+  {
+   "name": "desktop: reopening stats binds to current catalog again",
+   "ok": true,
+   "detail": "books"
+  },
+  {
+   "name": "mobile: stats opens on books from its catalog",
+   "ok": true,
+   "detail": "{\"sheet\":\"books\",\"sel\":[\"books\"],\"catalog\":\"books\"}"
+  },
+  {
+   "name": "mobile: history opens on books from its catalog",
+   "ok": true,
+   "detail": "{\"sheet\":\"books\",\"sel\":[\"books\"],\"catalog\":\"books\"}"
+  },
+  {
+   "name": "mobile: stats opens on films from its catalog",
+   "ok": true,
+   "detail": "{\"sheet\":\"films\",\"sel\":[\"films\"],\"catalog\":\"films\"}"
+  },
+  {
+   "name": "mobile: history opens on films from its catalog",
+   "ok": true,
+   "detail": "{\"sheet\":\"films\",\"sel\":[\"films\"],\"catalog\":\"films\"}"
+  },
+  {
+   "name": "mobile: stats opens on songs from its catalog",
+   "ok": true,
+   "detail": "{\"sheet\":\"songs\",\"sel\":[\"songs\"],\"catalog\":\"songs\"}"
+  },
+  {
+   "name": "mobile: history opens on songs from its catalog",
+   "ok": true,
+   "detail": "{\"sheet\":\"songs\",\"sel\":[\"songs\"],\"catalog\":\"songs\"}"
+  },
+  {
+   "name": "mobile: entry during running catalog transition uses the chosen target",
+   "ok": true,
+   "detail": "songs"
+  },
+  {
+   "name": "mobile: menu stays open when opened during a transition",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "mobile: internal category switch does not change the catalog or the other sheet",
+   "ok": true,
+   "detail": "{\"a\":\"films\",\"h\":\"films\"}"
+  },
+  {
+   "name": "mobile: reopening stats binds to current catalog again",
+   "ok": true,
+   "detail": "books"
+  },
+  {
+   "name": "unknown initial category (#xyz) defaults to books; #films opens films",
+   "ok": true,
+   "detail": "{\"a\":\"books\",\"b\":\"films\",\"c\":\"films\"}"
+  },
+  {
+   "name": "desktop/light: stats levels 1-3 clearly highlighted on books",
+   "ok": true,
+   "detail": "{\"category\":{\"active\":\"books\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":23.4,\"inkDistance\":106.3,\"contrastActive\":5.46,\"contrastInactiveMin\":5.87,\"equalWidths\":true},\"type\":{\"active\":\"activity\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":23.4,\"inkDistance\":106.3,\"contrastActive\":5.46,\"contrastInactiveMin\":5.87,\"equalWidths\":true},\"period\":{\"active\":\"month\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":23.4,\"inkDistance\":106.3,\"contrastActive\":5.46,\"contrastInactiveMin\":5.87,\"equalWidths\":true}}"
+  },
+  {
+   "name": "desktop/light: stats levels 1-3 clearly highlighted on films",
+   "ok": true,
+   "detail": "{\"category\":{\"active\":\"films\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":24.9,\"inkDistance\":115.6,\"contrastActive\":4.85,\"contrastInactiveMin\":5.87,\"equalWidths\":true},\"type\":{\"active\":\"activity\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":24.9,\"inkDistance\":115.6,\"contrastActive\":4.85,\"contrastInactiveMin\":5.87,\"equalWidths\":true},\"period\":{\"active\":\"month\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":24.9,\"inkDistance\":115.6,\"contrastActive\":4.85,\"contrastInactiveMin\":5.87,\"equalWidths\":true}}"
+  },
+  {
+   "name": "desktop/light: stats levels 1-3 clearly highlighted on songs",
+   "ok": true,
+   "detail": "{\"category\":{\"active\":\"songs\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":28.5,\"inkDistance\":78.8,\"contrastActive\":5.89,\"contrastInactiveMin\":5.87,\"equalWidths\":true},\"type\":{\"active\":\"activity\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":28.5,\"inkDistance\":78.8,\"contrastActive\":5.89,\"contrastInactiveMin\":5.87,\"equalWidths\":true},\"period\":{\"active\":\"month\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":28.5,\"inkDistance\":78.8,\"contrastActive\":5.89,\"contrastInactiveMin\":5.87,\"equalWidths\":true}}"
+  },
+  {
+   "name": "desktop/light: history category highlight and theme radio highlight",
+   "ok": true,
+   "detail": "{\"hist\":\"songs\",\"theme\":\"light\",\"histContrast\":5.89,\"themeContrast\":5.89}"
+  },
+  {
+   "name": "desktop/light: main capsule and all segment toggles share one style system",
+   "ok": true,
+   "detail": "{\"glider\":{\"border\":1,\"capsule\":true,\"ink\":\"rgb(20, 107, 75)\"},\"segs\":[{\"sel\":\"#stats-seg\",\"edgePx\":1,\"capsule\":true,\"shadowSoft\":true},{\"sel\":\"#stats-mode\",\"edgePx\":1,\"capsule\":true,\"shadowSoft\":true},{\"sel\":\"#stats-period\",\"edgePx\":1,\"capsule\":true,\"shadowSoft\":true}],\"segInk\":\"rgb(20, 107, 75)\",\"kind\":\"songs\"}"
+  },
+  {
+   "name": "desktop/dark: stats levels 1-3 clearly highlighted on books",
+   "ok": true,
+   "detail": "{\"category\":{\"active\":\"books\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":35.3,\"inkDistance\":93,\"contrastActive\":6.52,\"contrastInactiveMin\":8.49,\"equalWidths\":true},\"type\":{\"active\":\"activity\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":35.3,\"inkDistance\":93,\"contrastActive\":6.52,\"contrastInactiveMin\":8.49,\"equalWidths\":true},\"period\":{\"active\":\"month\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":35.3,\"inkDistance\":93,\"contrastActive\":6.52,\"contrastInactiveMin\":8.49,\"equalWidths\":true}}"
+  },
+  {
+   "name": "desktop/dark: stats levels 1-3 clearly highlighted on films",
+   "ok": true,
+   "detail": "{\"category\":{\"active\":\"films\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":39,\"inkDistance\":100.1,\"contrastActive\":5.64,\"contrastInactiveMin\":8.49,\"equalWidths\":true},\"type\":{\"active\":\"activity\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":39,\"inkDistance\":100.1,\"contrastActive\":5.64,\"contrastInactiveMin\":8.49,\"equalWidths\":true},\"period\":{\"active\":\"month\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":39,\"inkDistance\":100.1,\"contrastActive\":5.64,\"contrastInactiveMin\":8.49,\"equalWidths\":true}}"
+  },
+  {
+   "name": "desktop/dark: stats levels 1-3 clearly highlighted on songs",
+   "ok": true,
+   "detail": "{\"category\":{\"active\":\"songs\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":31.9,\"inkDistance\":82.8,\"contrastActive\":7.09,\"contrastInactiveMin\":8.49,\"equalWidths\":true},\"type\":{\"active\":\"activity\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":31.9,\"inkDistance\":82.8,\"contrastActive\":7.09,\"contrastInactiveMin\":8.49,\"equalWidths\":true},\"period\":{\"active\":\"month\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":31.9,\"inkDistance\":82.8,\"contrastActive\":7.09,\"contrastInactiveMin\":8.49,\"equalWidths\":true}}"
+  },
+  {
+   "name": "desktop/dark: history category highlight and theme radio highlight",
+   "ok": true,
+   "detail": "{\"hist\":\"songs\",\"theme\":\"dark\",\"histContrast\":7.09,\"themeContrast\":7.09}"
+  },
+  {
+   "name": "desktop/dark: main capsule and all segment toggles share one style system",
+   "ok": true,
+   "detail": "{\"glider\":{\"border\":1,\"capsule\":true,\"ink\":\"rgb(123, 240, 191)\"},\"segs\":[{\"sel\":\"#stats-seg\",\"edgePx\":1,\"capsule\":true,\"shadowSoft\":true},{\"sel\":\"#stats-mode\",\"edgePx\":1,\"capsule\":true,\"shadowSoft\":true},{\"sel\":\"#stats-period\",\"edgePx\":1,\"capsule\":true,\"shadowSoft\":true}],\"segInk\":\"rgb(123, 240, 191)\",\"kind\":\"songs\"}"
+  },
+  {
+   "name": "mobile/light: stats levels 1-3 clearly highlighted on books",
+   "ok": true,
+   "detail": "{\"category\":{\"active\":\"books\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":23.4,\"inkDistance\":106.3,\"contrastActive\":5.46,\"contrastInactiveMin\":5.87,\"equalWidths\":true},\"type\":{\"active\":\"activity\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":23.4,\"inkDistance\":106.3,\"contrastActive\":5.46,\"contrastInactiveMin\":5.87,\"equalWidths\":true},\"period\":{\"active\":\"month\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":23.4,\"inkDistance\":106.3,\"contrastActive\":5.46,\"contrastInactiveMin\":5.87,\"equalWidths\":true}}"
+  },
+  {
+   "name": "mobile/light: stats levels 1-3 clearly highlighted on films",
+   "ok": true,
+   "detail": "{\"category\":{\"active\":\"films\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":24.9,\"inkDistance\":115.6,\"contrastActive\":4.85,\"contrastInactiveMin\":5.87,\"equalWidths\":true},\"type\":{\"active\":\"activity\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":24.9,\"inkDistance\":115.6,\"contrastActive\":4.85,\"contrastInactiveMin\":5.87,\"equalWidths\":true},\"period\":{\"active\":\"month\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":24.9,\"inkDistance\":115.6,\"contrastActive\":4.85,\"contrastInactiveMin\":5.87,\"equalWidths\":true}}"
+  },
+  {
+   "name": "mobile/light: stats levels 1-3 clearly highlighted on songs",
+   "ok": true,
+   "detail": "{\"category\":{\"active\":\"songs\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":28.5,\"inkDistance\":78.8,\"contrastActive\":5.89,\"contrastInactiveMin\":5.87,\"equalWidths\":true},\"type\":{\"active\":\"activity\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":28.5,\"inkDistance\":78.8,\"contrastActive\":5.89,\"contrastInactiveMin\":5.87,\"equalWidths\":true},\"period\":{\"active\":\"month\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":28.5,\"inkDistance\":78.8,\"contrastActive\":5.89,\"contrastInactiveMin\":5.87,\"equalWidths\":true}}"
+  },
+  {
+   "name": "mobile/light: history category highlight and theme radio highlight",
+   "ok": true,
+   "detail": "{\"hist\":\"songs\",\"theme\":\"light\",\"histContrast\":5.89,\"themeContrast\":5.89}"
+  },
+  {
+   "name": "mobile/light: main capsule and all segment toggles share one style system",
+   "ok": true,
+   "detail": "{\"glider\":{\"border\":1,\"capsule\":true,\"ink\":\"rgb(20, 107, 75)\"},\"segs\":[{\"sel\":\"#stats-seg\",\"edgePx\":1,\"capsule\":true,\"shadowSoft\":true},{\"sel\":\"#stats-mode\",\"edgePx\":1,\"capsule\":true,\"shadowSoft\":true},{\"sel\":\"#stats-period\",\"edgePx\":1,\"capsule\":true,\"shadowSoft\":true}],\"segInk\":\"rgb(20, 107, 75)\",\"kind\":\"songs\"}"
+  },
+  {
+   "name": "mobile/dark: stats levels 1-3 clearly highlighted on books",
+   "ok": true,
+   "detail": "{\"category\":{\"active\":\"books\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":35.3,\"inkDistance\":93,\"contrastActive\":6.52,\"contrastInactiveMin\":8.49,\"equalWidths\":true},\"type\":{\"active\":\"activity\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":35.3,\"inkDistance\":93,\"contrastActive\":6.52,\"contrastInactiveMin\":8.49,\"equalWidths\":true},\"period\":{\"active\":\"month\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":35.3,\"inkDistance\":93,\"contrastActive\":6.52,\"contrastInactiveMin\":8.49,\"equalWidths\":true}}"
+  },
+  {
+   "name": "mobile/dark: stats levels 1-3 clearly highlighted on films",
+   "ok": true,
+   "detail": "{\"category\":{\"active\":\"films\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":39,\"inkDistance\":100.1,\"contrastActive\":5.64,\"contrastInactiveMin\":8.49,\"equalWidths\":true},\"type\":{\"active\":\"activity\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":39,\"inkDistance\":100.1,\"contrastActive\":5.64,\"contrastInactiveMin\":8.49,\"equalWidths\":true},\"period\":{\"active\":\"month\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":39,\"inkDistance\":100.1,\"contrastActive\":5.64,\"contrastInactiveMin\":8.49,\"equalWidths\":true}}"
+  },
+  {
+   "name": "mobile/dark: stats levels 1-3 clearly highlighted on songs",
+   "ok": true,
+   "detail": "{\"category\":{\"active\":\"songs\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":31.9,\"inkDistance\":82.8,\"contrastActive\":7.09,\"contrastInactiveMin\":8.49,\"equalWidths\":true},\"type\":{\"active\":\"activity\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":31.9,\"inkDistance\":82.8,\"contrastActive\":7.09,\"contrastInactiveMin\":8.49,\"equalWidths\":true},\"period\":{\"active\":\"month\",\"edgePx\":1,\"capsule\":true,\"bgDistance\":31.9,\"inkDistance\":82.8,\"contrastActive\":7.09,\"contrastInactiveMin\":8.49,\"equalWidths\":true}}"
+  },
+  {
+   "name": "mobile/dark: history category highlight and theme radio highlight",
+   "ok": true,
+   "detail": "{\"hist\":\"songs\",\"theme\":\"dark\",\"histContrast\":7.09,\"themeContrast\":7.09}"
+  },
+  {
+   "name": "mobile/dark: main capsule and all segment toggles share one style system",
+   "ok": true,
+   "detail": "{\"glider\":{\"border\":1,\"capsule\":true,\"ink\":\"rgb(123, 240, 191)\"},\"segs\":[{\"sel\":\"#stats-seg\",\"edgePx\":1,\"capsule\":true,\"shadowSoft\":true},{\"sel\":\"#stats-mode\",\"edgePx\":1,\"capsule\":true,\"shadowSoft\":true},{\"sel\":\"#stats-period\",\"edgePx\":1,\"capsule\":true,\"shadowSoft\":true}],\"segInk\":\"rgb(123, 240, 191)\",\"kind\":\"songs\"}"
+  },
+  {
+   "name": "keyboard: stats category arrows bounded, Home/End, focus kept",
+   "ok": true,
+   "detail": "{\"a\":\"books\",\"b\":\"songs\",\"c\":\"books\",\"d\":\"songs\",\"f\":\"books\"}"
+  },
+  {
+   "name": "keyboard: history arrows bounded; Escape closes sheet and restores focus",
+   "ok": true,
+   "detail": "{\"a\":\"songs\",\"open\":false,\"focus\":\"more-toggle\"}"
+  },
+  {
+   "name": "keyboard: main tabs arrow navigation",
+   "ok": true,
+   "detail": "films"
+  },
+  {
+   "name": "dark: stats swipe left → films, content follows finger without jumps",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-stats\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"sm\":{\"intermediate\":32,\"maxStep\":17.2,\"limit\":24,\"maxGap\":16.8,\"scrollJump\":0},\"sel\":[\"films\"]}"
+  },
+  {
+   "name": "dark: stats swipe left → songs, content follows finger without jumps",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-stats\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"sm\":{\"intermediate\":31,\"maxStep\":17.1,\"limit\":24,\"maxGap\":16.8,\"scrollJump\":0},\"sel\":[\"songs\"]}"
+  },
+  {
+   "name": "dark: stats swipe right → films, content follows finger without jumps",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-stats\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"sm\":{\"intermediate\":31,\"maxStep\":17.1,\"limit\":24,\"maxGap\":16.8,\"scrollJump\":0},\"sel\":[\"films\"]}"
+  },
+  {
+   "name": "dark: stats swipe right → books, content follows finger without jumps",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-stats\",\"kind\":\"books\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"sm\":{\"intermediate\":31,\"maxStep\":17.1,\"limit\":24,\"maxGap\":16.8,\"scrollJump\":0},\"sel\":[\"books\"]}"
+  },
+  {
+   "name": "dark: stats edge books → right swipe does nothing, rubber-band returns",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"books\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "dark: stats edge songs → left swipe does nothing",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "dark: stats short tap does not switch category",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-stats\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"openedRecord\":false}"
+  },
+  {
+   "name": "dark: stats small slow partial swipe (60px, 700ms) returns smoothly",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "dark: stats slow long swipe (190px, 900ms) commits",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "dark: stats quick short fling (70px, 70ms) commits",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"books\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "dark: stats drag out and back (cancelled) keeps category",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "dark: stats one very long swipe = one switch",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "dark: stats diagonal gesture does not switch",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":140}"
+  },
+  {
+   "name": "dark: stats vertical scroll is native and does not switch",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":343}"
+  },
+  {
+   "name": "dark: stats touchcancel mid-drag restores state",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":0,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "dark: stats finger catches the settling animation without a jump",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-stats\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"sm\":{\"intermediate\":40,\"maxStep\":25.3,\"limit\":22.1,\"maxGap\":16.8,\"scrollJump\":0}}"
+  },
+  {
+   "name": "dark: stats swipe starting on a chart switches category (charts have no own gestures)",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":266}"
+  },
+  {
+   "name": "dark: stats swipe starting on a segmented control switches category",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-stats\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"mode\":[\"activity\"]}"
+  },
+  {
+   "name": "dark: stats swipe preserves scroll (clamped to new content)",
+   "ok": true,
+   "detail": "{\"before\":900,\"after\":900,\"max\":1687,\"sm\":{\"intermediate\":31,\"maxStep\":17,\"limit\":23.8,\"maxGap\":16.8,\"scrollJump\":0}}"
+  },
+  {
+   "name": "dark: history swipe left → films, content follows finger without jumps",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-history\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"sm\":{\"intermediate\":31,\"maxStep\":17,\"limit\":24,\"maxGap\":16.8,\"scrollJump\":0},\"sel\":[\"films\"]}"
+  },
+  {
+   "name": "dark: history swipe left → songs, content follows finger without jumps",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-history\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"sm\":{\"intermediate\":31,\"maxStep\":17,\"limit\":24,\"maxGap\":16.8,\"scrollJump\":0},\"sel\":[\"songs\"]}"
+  },
+  {
+   "name": "dark: history swipe right → films, content follows finger without jumps",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-history\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"sm\":{\"intermediate\":31,\"maxStep\":17.1,\"limit\":24,\"maxGap\":16.8,\"scrollJump\":0},\"sel\":[\"films\"]}"
+  },
+  {
+   "name": "dark: history swipe right → books, content follows finger without jumps",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-history\",\"kind\":\"books\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"sm\":{\"intermediate\":31,\"maxStep\":17,\"limit\":24,\"maxGap\":16.8,\"scrollJump\":0},\"sel\":[\"books\"]}"
+  },
+  {
+   "name": "dark: history edge books → right swipe does nothing, rubber-band returns",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-history\",\"kind\":\"books\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "dark: history edge songs → left swipe does nothing",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-history\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "dark: history short tap does not switch category",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-history\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":0,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"openedRecord\":true}"
+  },
+  {
+   "name": "dark: history small slow partial swipe (60px, 700ms) returns smoothly",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-history\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "dark: history slow long swipe (190px, 900ms) commits",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-history\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "dark: history quick short fling (70px, 70ms) commits",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-history\",\"kind\":\"books\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "dark: history drag out and back (cancelled) keeps category",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-history\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":0,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "dark: history one very long swipe = one switch",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-history\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "dark: history diagonal gesture does not switch",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-history\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":140}"
+  },
+  {
+   "name": "dark: history vertical scroll is native and does not switch",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-history\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":538}"
+  },
+  {
+   "name": "dark: history touchcancel mid-drag restores state",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-history\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":0,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "dark: history finger catches the settling animation without a jump",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-history\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"sm\":{\"intermediate\":40,\"maxStep\":25.5,\"limit\":22.1,\"maxGap\":16.8,\"scrollJump\":0}}"
+  },
+  {
+   "name": "dark: history swipe starting on an event row switches; tap on row opens record",
+   "ok": true,
+   "detail": "{\"a\":{\"open\":\"sheet-history\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"rec\":true,\"b\":{\"open\":\"sheet-history\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}}"
+  },
+  {
+   "name": "dark: record view does not swipe categories",
+   "ok": true,
+   "detail": "{\"work\":true,\"kind\":\"films\"}"
+  },
+  {
+   "name": "dark: catalog stays unchanged after all sheet swipes",
+   "ok": true,
+   "detail": "books"
+  },
+  {
+   "name": "light: stats swipe left → films, content follows finger without jumps",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-stats\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"sm\":{\"intermediate\":32,\"maxStep\":17.1,\"limit\":24,\"maxGap\":16.8,\"scrollJump\":0},\"sel\":[\"films\"]}"
+  },
+  {
+   "name": "light: stats swipe left → songs, content follows finger without jumps",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-stats\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"sm\":{\"intermediate\":31,\"maxStep\":17.1,\"limit\":24,\"maxGap\":16.8,\"scrollJump\":0},\"sel\":[\"songs\"]}"
+  },
+  {
+   "name": "light: stats swipe right → films, content follows finger without jumps",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-stats\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"sm\":{\"intermediate\":32,\"maxStep\":17.2,\"limit\":24,\"maxGap\":16.8,\"scrollJump\":0},\"sel\":[\"films\"]}"
+  },
+  {
+   "name": "light: stats swipe right → books, content follows finger without jumps",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-stats\",\"kind\":\"books\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"sm\":{\"intermediate\":31,\"maxStep\":17,\"limit\":24,\"maxGap\":16.8,\"scrollJump\":0},\"sel\":[\"books\"]}"
+  },
+  {
+   "name": "light: stats edge books → right swipe does nothing, rubber-band returns",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"books\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "light: stats edge songs → left swipe does nothing",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "light: stats short tap does not switch category",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-stats\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"openedRecord\":false}"
+  },
+  {
+   "name": "light: stats small slow partial swipe (60px, 700ms) returns smoothly",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "light: stats slow long swipe (190px, 900ms) commits",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "light: stats quick short fling (70px, 70ms) commits",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"books\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "light: stats drag out and back (cancelled) keeps category",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "light: stats one very long swipe = one switch",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "light: stats diagonal gesture does not switch",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":233}"
+  },
+  {
+   "name": "light: stats vertical scroll is native and does not switch",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":346}"
+  },
+  {
+   "name": "light: stats touchcancel mid-drag restores state",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":0,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "light: stats finger catches the settling animation without a jump",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-stats\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"sm\":{\"intermediate\":40,\"maxStep\":25.5,\"limit\":22.1,\"maxGap\":16.8,\"scrollJump\":0}}"
+  },
+  {
+   "name": "light: stats swipe starting on a chart switches category (charts have no own gestures)",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-stats\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":266}"
+  },
+  {
+   "name": "light: stats swipe starting on a segmented control switches category",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-stats\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"mode\":[\"activity\"]}"
+  },
+  {
+   "name": "light: stats swipe preserves scroll (clamped to new content)",
+   "ok": true,
+   "detail": "{\"before\":900,\"after\":900,\"max\":1687,\"sm\":{\"intermediate\":31,\"maxStep\":17.1,\"limit\":23.8,\"maxGap\":16.8,\"scrollJump\":0}}"
+  },
+  {
+   "name": "light: history swipe left → films, content follows finger without jumps",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-history\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"sm\":{\"intermediate\":32,\"maxStep\":17.2,\"limit\":24,\"maxGap\":16.8,\"scrollJump\":0},\"sel\":[\"films\"]}"
+  },
+  {
+   "name": "light: history swipe left → songs, content follows finger without jumps",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-history\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"sm\":{\"intermediate\":31,\"maxStep\":17.1,\"limit\":24,\"maxGap\":16.8,\"scrollJump\":0},\"sel\":[\"songs\"]}"
+  },
+  {
+   "name": "light: history swipe right → films, content follows finger without jumps",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-history\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"sm\":{\"intermediate\":32,\"maxStep\":17.3,\"limit\":24,\"maxGap\":16.8,\"scrollJump\":0},\"sel\":[\"films\"]}"
+  },
+  {
+   "name": "light: history swipe right → books, content follows finger without jumps",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-history\",\"kind\":\"books\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"sm\":{\"intermediate\":31,\"maxStep\":17.1,\"limit\":24,\"maxGap\":16.8,\"scrollJump\":0},\"sel\":[\"books\"]}"
+  },
+  {
+   "name": "light: history edge books → right swipe does nothing, rubber-band returns",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-history\",\"kind\":\"books\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "light: history edge songs → left swipe does nothing",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-history\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "light: history short tap does not switch category",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-history\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":0,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"openedRecord\":true}"
+  },
+  {
+   "name": "light: history small slow partial swipe (60px, 700ms) returns smoothly",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-history\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "light: history slow long swipe (190px, 900ms) commits",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-history\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "light: history quick short fling (70px, 70ms) commits",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-history\",\"kind\":\"books\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "light: history drag out and back (cancelled) keeps category",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-history\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":0,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "light: history one very long swipe = one switch",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-history\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "light: history diagonal gesture does not switch",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-history\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":139}"
+  },
+  {
+   "name": "light: history vertical scroll is native and does not switch",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-history\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":2,\"transform\":\"\",\"swiping\":false,\"scroll\":517}"
+  },
+  {
+   "name": "light: history touchcancel mid-drag restores state",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-history\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":0,\"transform\":\"\",\"swiping\":false,\"scroll\":0}"
+  },
+  {
+   "name": "light: history finger catches the settling animation without a jump",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-history\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"sm\":{\"intermediate\":40,\"maxStep\":25.5,\"limit\":22.1,\"maxGap\":16.8,\"scrollJump\":0}}"
+  },
+  {
+   "name": "light: history swipe starting on an event row switches; tap on row opens record",
+   "ok": true,
+   "detail": "{\"a\":{\"open\":\"sheet-history\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"rec\":true,\"b\":{\"open\":\"sheet-history\",\"kind\":\"songs\",\"ghosts\":0,\"prepared\":1,\"transform\":\"\",\"swiping\":false,\"scroll\":0}}"
+  },
+  {
+   "name": "light: record view does not swipe categories",
+   "ok": true,
+   "detail": "{\"work\":true,\"kind\":\"films\"}"
+  },
+  {
+   "name": "light: catalog stays unchanged after all sheet swipes",
+   "ok": true,
+   "detail": "books"
+  },
+  {
+   "name": "reduced motion: sheet swipe switches instantly, no content animation",
+   "ok": true,
+   "detail": "{\"st\":{\"open\":\"sheet-stats\",\"kind\":\"films\",\"ghosts\":0,\"prepared\":0,\"transform\":\"\",\"swiping\":false,\"scroll\":0},\"tr\":0}"
+  },
+  {
+   "name": "reduced motion: catalog swipe still switches",
+   "ok": true,
+   "detail": "films"
+  },
+  {
+   "name": "catalog: swipe left books → films, right back to books",
+   "ok": true,
+   "detail": "{\"a\":\"films\",\"b\":\"books\"}"
+  },
+  {
+   "name": "catalog: edge (books, swipe right) does not wrap",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "catalog: partial drag returns and leaves no transforms",
+   "ok": true,
+   "detail": "{\"k\":\"books\",\"anim\":0,\"tr\":\"\"}"
+  },
+  {
+   "name": "catalog: vertical scroll native, no switch",
+   "ok": true,
+   "detail": "{\"k\":\"books\",\"y\":681}"
+  },
+  {
+   "name": "catalog: each catalog keeps its own scroll position",
+   "ok": true,
+   "detail": "1200"
+  },
+  {
+   "name": "catalog: cancelled swipe followed by opening the menu keeps the original catalog",
+   "ok": true,
+   "detail": "{\"k\":\"books\",\"s\":\"books\"}"
+  },
+  {
+   "name": "system Back from a record returns to the history list (same category)",
+   "ok": true,
+   "detail": "{\"open\":\"sheet-history\",\"work\":false,\"kind\":\"films\",\"title\":\"История\"}"
+  },
+  {
+   "name": "second system Back closes history and returns to the catalog",
+   "ok": true,
+   "detail": "{\"open\":null,\"k\":\"films\"}"
+  },
+  {
+   "name": "in-app back from record → list; Escape from record closes without reopening",
+   "ok": true,
+   "detail": "{\"a\":{\"open\":\"sheet-history\",\"work\":false},\"b\":{\"open\":null,\"st\":null},\"len0\":4}"
+  },
+  {
+   "name": "record opened from statistics: in-app back shows history list; close returns to catalog",
+   "ok": true,
+   "detail": "{\"a\":{\"open\":\"sheet-history\",\"work\":true},\"b\":{\"work\":false},\"c\":{\"open\":null,\"st\":null}}"
+  },
+  {
+   "name": "«Открыть в каталоге» closes sheet and jumps to the record",
+   "ok": true,
+   "detail": "{\"k\":\"books\",\"open\":false,\"visible\":true}"
+  },
+  {
+   "name": "reload with a sheet in history state restores that sheet",
+   "ok": true,
+   "detail": "sheet-stats"
+  },
+  {
+   "name": "desktop: books reading → read → abandoned are mutually exclusive",
+   "ok": true,
+   "detail": "{\"a\":{\"cls\":\"item next active\",\"checks\":{\"downloaded\":true,\"reading\":true,\"read\":false,\"abandoned\":false}},\"b\":{\"cls\":\"item done\",\"checks\":{\"downloaded\":true,\"reading\":false,\"read\":true,\"abandoned\":false}},\"c\":{\"cls\":\"item abandoned\",\"checks\":{\"downloaded\":true,\"reading\":false,\"read\":false,\"abandoned\":true}},\"d\":{\"cls\":\"item next\",\"checks\":{\"downloaded\":true,\"reading\":false,\"read\":false,\"abandoned\":false}}}"
+  },
+  {
+   "name": "desktop: «Сейчас читаю» card and pager reflect reading books",
+   "ok": true,
+   "detail": "{\"r\":{\"title\":\"Капитанская дочка\",\"count\":\"1 из 2\",\"pager\":true},\"r2\":\"2 из 2\"}"
+  },
+  {
+   "name": "desktop: download toggle logs history and keeps 201±1 counts",
+   "ok": true,
+   "detail": "{\"before\":\"201\",\"after\":\"200\",\"back\":\"201\",\"isOn\":true}"
+  },
+  {
+   "name": "desktop: films watching → seen; next card and FAB target advance",
+   "ok": true,
+   "detail": "{\"r\":{\"next\":\"2\",\"kicker\":\"Смотреть следующим\",\"seenTile\":\"1\"},\"r2\":\"Сейчас смотрю\"}"
+  },
+  {
+   "name": "desktop: FAB «следующее» scrolls to the next record",
+   "ok": true,
+   "detail": "{\"id\":\"25\",\"exp\":\"25\",\"inView\":true,\"flash\":false}"
+  },
+  {
+   "name": "desktop: songs listened/favorite/added/abandoned interplay",
+   "ok": true,
+   "detail": "{\"a\":{\"cls\":\"item abandoned\",\"checks\":{\"listened\":false,\"added\":false,\"favorite\":true,\"abandoned\":true}},\"b\":{\"cls\":\"item done\",\"checks\":{\"listened\":true,\"added\":false,\"favorite\":true,\"abandoned\":false}}}"
+  },
+  {
+   "name": "desktop: filter «Брошено» shows only abandoned, empty message otherwise",
+   "ok": true,
+   "detail": "{\"r\":[\"7\"],\"r2\":0,\"e1\":true,\"e2\":false,\"n\":24}"
+  },
+  {
+   "name": "desktop: description expands and collapses",
+   "ok": true,
+   "detail": "{\"h0\":45.5,\"h1\":278.5,\"o\":true,\"ex\":\"true\",\"closed\":true,\"h2\":45.5,\"style\":\"\"}"
+  },
+  {
+   "name": "desktop: copy title button gives feedback",
+   "ok": true,
+   "detail": "{\"toast\":\"Название скопировано\",\"copied\":true}"
+  },
+  {
+   "name": "desktop: many random status toggles keep state consistent",
+   "ok": true,
+   "detail": "{\"bad\":[],\"mismatch\":0,\"events\":200}"
+  },
+  {
+   "name": "desktop: reload preserves marks and history exactly",
+   "ok": true,
+   "detail": "11302/11302"
+  },
+  {
+   "name": "desktop: statistics «Моя активность» and «Коллекция» reflect actions; all periods render",
+   "ok": true,
+   "detail": "{\"r\":{\"day\":{\"tiles\":[\"18\",\"0\",\"16\",\"13\"],\"chart\":true,\"label\":\"Сегодня, 5 ноября\"},\"month\":{\"tiles\":[\"18\",\"0\",\"16\",\"13\"],\"chart\":true,\"label\":\"Ноябрь 2026\"},\"year\":{\"tiles\":[\"18\",\"0\",\"16\",\"13\"],\"chart\":true,\"label\":\"2026 год\"},\"all\":{\"tiles\":[\"18\",\"0\",\"16\",\"13\"],\"chart\":true,\"label\":\"Всё время\"}},\"cur\":\"Ноябрь 2026\",\"prev\":\"Октябрь 2026\",\"navAll\":true,\"c\":{\"tiles\":6,\"cards\":4,\"ring\":\"0%\"}}"
+  },
+  {
+   "name": "desktop: history shows events per category with dates",
+   "ok": true,
+   "detail": "{\"books\":{\"rows\":61,\"day\":\"Сегодня\",\"foreign\":0},\"films\":{\"rows\":80,\"day\":\"Сегодня\",\"foreign\":0},\"songs\":{\"rows\":59,\"day\":\"Сегодня\",\"foreign\":0}}"
+  },
+  {
+   "name": "mobile: books reading → read → abandoned are mutually exclusive",
+   "ok": true,
+   "detail": "{\"a\":{\"cls\":\"item next active\",\"checks\":{\"downloaded\":true,\"reading\":true,\"read\":false,\"abandoned\":false}},\"b\":{\"cls\":\"item done\",\"checks\":{\"downloaded\":true,\"reading\":false,\"read\":true,\"abandoned\":false}},\"c\":{\"cls\":\"item abandoned\",\"checks\":{\"downloaded\":true,\"reading\":false,\"read\":false,\"abandoned\":true}},\"d\":{\"cls\":\"item next\",\"checks\":{\"downloaded\":true,\"reading\":false,\"read\":false,\"abandoned\":false}}}"
+  },
+  {
+   "name": "mobile: «Сейчас читаю» card and pager reflect reading books",
+   "ok": true,
+   "detail": "{\"r\":{\"title\":\"Капитанская дочка\",\"count\":\"1 из 2\",\"pager\":true},\"r2\":\"2 из 2\"}"
+  },
+  {
+   "name": "mobile: download toggle logs history and keeps 201±1 counts",
+   "ok": true,
+   "detail": "{\"before\":\"201\",\"after\":\"200\",\"back\":\"201\",\"isOn\":true}"
+  },
+  {
+   "name": "mobile: films watching → seen; next card and FAB target advance",
+   "ok": true,
+   "detail": "{\"r\":{\"next\":\"2\",\"kicker\":\"Смотреть следующим\",\"seenTile\":\"1\"},\"r2\":\"Сейчас смотрю\"}"
+  },
+  {
+   "name": "mobile: FAB «следующее» scrolls to the next record",
+   "ok": true,
+   "detail": "{\"id\":\"25\",\"exp\":\"25\",\"inView\":true,\"flash\":false}"
+  },
+  {
+   "name": "mobile: songs listened/favorite/added/abandoned interplay",
+   "ok": true,
+   "detail": "{\"a\":{\"cls\":\"item abandoned\",\"checks\":{\"listened\":false,\"added\":false,\"favorite\":true,\"abandoned\":true}},\"b\":{\"cls\":\"item done\",\"checks\":{\"listened\":true,\"added\":false,\"favorite\":true,\"abandoned\":false}}}"
+  },
+  {
+   "name": "mobile: filter «Брошено» shows only abandoned, empty message otherwise",
+   "ok": true,
+   "detail": "{\"r\":[\"7\"],\"r2\":0,\"e1\":true,\"e2\":false,\"n\":24}"
+  },
+  {
+   "name": "mobile: description expands and collapses",
+   "ok": true,
+   "detail": "{\"h0\":45.5,\"h1\":460.5,\"o\":true,\"ex\":\"true\",\"closed\":true,\"h2\":45.5,\"style\":\"\"}"
+  },
+  {
+   "name": "mobile: copy title button gives feedback",
+   "ok": true,
+   "detail": "{\"toast\":\"Название скопировано\",\"copied\":true}"
+  },
+  {
+   "name": "mobile: many random status toggles keep state consistent",
+   "ok": true,
+   "detail": "{\"bad\":[],\"mismatch\":0,\"events\":200}"
+  },
+  {
+   "name": "mobile: reload preserves marks and history exactly",
+   "ok": true,
+   "detail": "11302/11302"
+  },
+  {
+   "name": "mobile: statistics «Моя активность» and «Коллекция» reflect actions; all periods render",
+   "ok": true,
+   "detail": "{\"r\":{\"day\":{\"tiles\":[\"18\",\"0\",\"16\",\"13\"],\"chart\":true,\"label\":\"Сегодня, 5 ноября\"},\"month\":{\"tiles\":[\"18\",\"0\",\"16\",\"13\"],\"chart\":true,\"label\":\"Ноябрь 2026\"},\"year\":{\"tiles\":[\"18\",\"0\",\"16\",\"13\"],\"chart\":true,\"label\":\"2026 год\"},\"all\":{\"tiles\":[\"18\",\"0\",\"16\",\"13\"],\"chart\":true,\"label\":\"Всё время\"}},\"cur\":\"Ноябрь 2026\",\"prev\":\"Октябрь 2026\",\"navAll\":true,\"c\":{\"tiles\":6,\"cards\":4,\"ring\":\"0%\"}}"
+  },
+  {
+   "name": "mobile: history shows events per category with dates",
+   "ok": true,
+   "detail": "{\"books\":{\"rows\":61,\"day\":\"Сегодня\",\"foreign\":0},\"films\":{\"rows\":80,\"day\":\"Сегодня\",\"foreign\":0},\"songs\":{\"rows\":59,\"day\":\"Сегодня\",\"foreign\":0}}"
+  },
+  {
+   "name": "existing CP19 progress in localStorage is read without reset",
+   "ok": true,
+   "detail": "{\"r7\":true,\"r8\":true,\"d5\":false,\"f3\":true,\"s9\":true,\"ev\":30,\"tile\":\"200\"}"
+  },
+  {
+   "name": "corrupted store: no crash, raw kept in recovery key, notice shown",
+   "ok": true,
+   "detail": "{\"rec\":\"{broken\",\"toast\":\"Часть сохранённых данных повреждена. Проверьте отметки скачивания и при необходимости восстановите резервную копию.\",\"dl\":\"201\",\"errs\":[]}"
+  },
+  {
+   "name": "corrupted field types are sanitised (non-boolean / unknown ids ignored)",
+   "ok": true,
+   "detail": "{\"unknown\":false,\"r2\":false,\"a2\":true,\"r3\":false,\"films\":\"object\"}"
+  },
+  {
+   "name": "legacy (pre-CP08) key migrates downloads only, once",
+   "ok": true,
+   "detail": "{\"a\":{\"d2\":false,\"d300\":true,\"r4\":false},\"b\":true,\"before\":{\"live\":true,\"stored\":true,\"keys\":4},\"after\":{\"stored\":true,\"keys\":[\"personal-collections-clean-cp08-v1-theme-choice\",\"personal-collections-clean-cp08-v1\",\"personal-collections-swipe-preview-v1\",\"personal-collections-clean-cp08-v1-history\"],\"marker\":null},\"logs\":[]}"
+  },
+  {
+   "name": "localStorage unavailable: app still works, settings warn",
+   "ok": true,
+   "detail": "{\"note\":\"Браузер не разрешил локальное хранение. Чтобы не потерять отметки, сохраните каталог с отметками перед закрытием.\",\"reading\":true,\"errs\":[]}"
+  },
+  {
+   "name": "export backup JSON (schema 4, signatures, history)",
+   "ok": true,
+   "detail": "{\"events\":3}"
+  },
+  {
+   "name": "import backup into a fresh profile restores marks and history",
+   "ok": true,
+   "detail": "Прогресс восстановлен: все три каталога."
+  },
+  {
+   "name": "import of invalid / foreign files reports an error and changes nothing",
+   "ok": true,
+   "detail": "{\"t1\":\"Ошибка восстановления: Неподдерживаемый формат резервной копии\",\"t2\":\"Ошибка восстановления: Unexpected token 'o', \\\"not json\\\" is not valid JSON\"}"
+  },
+  {
+   "name": "«Сохранить каталог с отметками»: saved HTML keeps all data blocks byte-identical and embeds marks",
+   "ok": true,
+   "detail": "{\"same\":true,\"ghosts\":false}"
+  },
+  {
+   "name": "saved HTML opens via file:// in a fresh profile with marks and history",
+   "ok": true,
+   "detail": "{\"read\":true,\"ev\":3,\"n\":\"496,500,500\",\"dl\":\"200\",\"errs\":[]}"
+  },
+  {
+   "name": "legacy single-catalog backup (catalogues-v3) restores downloads only",
+   "ok": true,
+   "detail": "{\"d4\":true,\"s5\":false}"
+  },
+  {
+   "name": "clear history and per-section reset keep downloads",
+   "ok": true,
+   "detail": "{\"read\":0,\"dl\":200,\"ev\":0,\"dlRef\":\"200\"}"
+  },
+  {
+   "name": "theme: light/dark/system choice applied and persisted",
+   "ok": true,
+   "detail": "{\"a\":\"light\",\"b\":\"light\",\"c\":\"dark\"}"
+  },
+  {
+   "name": "app left open past midnight: «День» in statistics shows the new today",
+   "ok": true,
+   "detail": "{\"a\":\"Сегодня, 4 ноября\",\"b\":\"Сегодня, 5 ноября\",\"userChoiceKept\":\"Вчера, 4 ноября\"}"
+  },
+  {
+   "name": "layout 360px: no horizontal overflow; tabs, sheets and segments fit",
+   "ok": true,
+   "detail": "{\"a\":{\"sw\":360,\"cw\":360,\"tabs\":true},\"b\":{\"bodySW\":360,\"bodyCW\":360,\"segs\":true}}"
+  },
+  {
+   "name": "layout 390px: no horizontal overflow; tabs, sheets and segments fit",
+   "ok": true,
+   "detail": "{\"a\":{\"sw\":390,\"cw\":390,\"tabs\":true},\"b\":{\"bodySW\":390,\"bodyCW\":390,\"segs\":true}}"
+  },
+  {
+   "name": "layout 736px: no horizontal overflow; tabs, sheets and segments fit",
+   "ok": true,
+   "detail": "{\"a\":{\"sw\":736,\"cw\":736,\"tabs\":true},\"b\":{\"bodySW\":736,\"bodyCW\":736,\"segs\":true}}"
+  },
+  {
+   "name": "layout 1024px: no horizontal overflow; tabs, sheets and segments fit",
+   "ok": true,
+   "detail": "{\"a\":{\"sw\":1024,\"cw\":1024,\"tabs\":true},\"b\":{\"bodySW\":1024,\"bodyCW\":1024,\"segs\":true}}"
+  },
+  {
+   "name": "layout 1280px: no horizontal overflow; tabs, sheets and segments fit",
+   "ok": true,
+   "detail": "{\"a\":{\"sw\":1280,\"cw\":1280,\"tabs\":true},\"b\":{\"bodySW\":1280,\"bodyCW\":1280,\"segs\":true}}"
+  },
+  {
+   "name": "layout 1440px: no horizontal overflow; tabs, sheets and segments fit",
+   "ok": true,
+   "detail": "{\"a\":{\"sw\":1440,\"cw\":1440,\"tabs\":true},\"b\":{\"bodySW\":1440,\"bodyCW\":1440,\"segs\":true}}"
+  },
+  {
+   "name": "10 000 events: loads, history paginates, stats render, toggles stay fast",
+   "ok": true,
+   "detail": "{\"open\":17.8,\"rows\":80,\"rows2\":160,\"stats\":89.2,\"toggleMedian\":50.5,\"events\":10005}"
+  },
+  {
+   "name": "no uncaught JavaScript exceptions or console.error in any run",
+   "ok": true,
+   "detail": "[]"
+  }
+ ]
+}

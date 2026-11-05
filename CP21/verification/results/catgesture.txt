@@ -1,0 +1,16 @@
+## orig/Moi_kollektsii_CP20.html
+OK   straight              → films
+OK   thumb arc 12px        → films
+OK   thumb arc 18px        → films
+OK   diagonal 30°          → films
+OK   after vertical fling  → films
+OK   on a card button      → films
+OK   vertical scroll       → books
+## app.html
+OK   straight              → films
+OK   thumb arc 12px        → films
+OK   thumb arc 18px        → films
+OK   diagonal 30°          → films
+OK   after vertical fling  → films
+OK   on a card button      → films
+OK   vertical scroll       → books

@@ -1,0 +1,9 @@
+// Main catalog swipe recognition with realistic trajectories. Usage: node catgesture.js <app.html>
+const L = require('./lib'); const sleep = ms => new Promise(r => setTimeout(r, ms));
+function arcPath(x0, y0, dx, ms, drift) { const pts = [], n = Math.max(3, Math.round(ms / 16.7)); for (let i = 0; i <= n; i++) { const t = i / n, e = t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; pts.push({ x: x0 + dx * e, y: y0 - drift * Math.sin(Math.min(1, t * 2.2) * Math.PI / 2), t: i * ms / n }); } pts.push({ ...pts[pts.length - 1], t: ms + 16 }); return pts; }
+(async () => {
+  const b = await L.launch(); const res = [];
+  const cases = [['straight', () => L.swipePath(330, 500, -200, 3, 250), 'films'], ['thumb arc 12px', () => arcPath(330, 500, -210, 280, 12), 'films'], ['thumb arc 18px', () => arcPath(330, 500, -220, 300, 18), 'films'], ['diagonal 30°', () => L.swipePath(330, 600, -200, -110, 260), 'films'], ['after vertical fling', async p => { await L.touchPath(p, L.swipePath(200, 700, 0, -400, 120)); await sleep(60); return L.swipePath(330, 450, -200, 3, 250); }, 'films'], ['on a card button', async p => { const r = await p.evaluate(() => { const e = document.querySelector('#catalog-books .item .mark'); e.scrollIntoView({ block: 'center' }); const q = e.getBoundingClientRect(); return { x: q.left + q.width / 2, y: q.top + q.height / 2 }; }); return L.swipePath(Math.min(r.x + 120, 360), r.y, -200, 2, 250); }, 'films'], ['vertical scroll', () => L.swipePath(200, 700, 5, -300, 250), 'books']];
+  for (const [name, fn, want] of cases) { const ctx = await L.mobileContext(b); const p = await L.openApp(ctx, process.argv[2]); await sleep(900); const pts = await fn(p); await L.touchPath(p, pts); await sleep(800); const k = await p.evaluate(() => document.documentElement.dataset.kind); res.push((k === want ? 'OK   ' : 'MISS ') + name.padEnd(22) + '→ ' + k); await ctx.close(); }
+  console.log(res.join('\n')); await b.close();
+})();

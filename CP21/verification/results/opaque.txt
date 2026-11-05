@@ -1,0 +1,38 @@
+## orig/Moi_kollektsii_CP20.html
+{"tabClick":"films","swipeLeft":"songs","swipeRight":"films","markInMemory":true,"historyKind":"films","historyRows":1,"recordOpened":true,"backToList":true,"historySwipe":"songs","sheetClosed":true,"statsSwipe":"songs","escapeClosed":true,"errors":["A history state object with URL cannot be created in a document with origin 'null'","A history state object with URL cannot be created in a document with origin 'null'","A history state object with URL cannot be created in a document with origin 'null'"]}
+{
+ "origin": "null",
+ "localStorageThrows": "SecurityError",
+ "replaceStateThrows": "SecurityError",
+ "catalogAfterTabClick": "songs",
+ "catalogAfterSwipe": "songs",
+ "touchmovesSeenInFrame": 14,
+ "catalogAfterSecondSwipe": "songs",
+ "touchmovesSeenInFrame2": 28,
+ "markInMemory": true,
+ "statsKind": "songs",
+ "statsAfterSwipeRight": "films",
+ "sheetClosed": true,
+ "settingsWarning": "Браузер не разрешил локальное хранение. Чтобы не потерять от",
+ "errors": [
+  "Failed to execute 'replaceState' on 'History': A history state object with URL 'file:///home/user/dhs-audit-sandbox/work21/tools/blank.html#songs' cannot be created in a document with origin 'null' and URL 'about:srcdoc'."
+ ]
+}
+## app.html
+{"tabClick":"films","swipeLeft":"songs","swipeRight":"films","markInMemory":true,"historyKind":"films","historyRows":1,"recordOpened":true,"backToList":true,"historySwipe":"songs","sheetClosed":true,"statsSwipe":"songs","escapeClosed":true,"errors":[]}
+{
+ "origin": "null",
+ "localStorageThrows": "SecurityError",
+ "replaceStateThrows": "SecurityError",
+ "catalogAfterTabClick": "songs",
+ "catalogAfterSwipe": "songs",
+ "touchmovesSeenInFrame": 14,
+ "catalogAfterSecondSwipe": "songs",
+ "touchmovesSeenInFrame2": 28,
+ "markInMemory": true,
+ "statsKind": "songs",
+ "statsAfterSwipeRight": "films",
+ "sheetClosed": true,
+ "settingsWarning": "Браузер не разрешил локальное хранение. Чтобы не потерять от",
+ "errors": []
+}

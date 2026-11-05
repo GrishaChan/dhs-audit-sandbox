@@ -1,0 +1,302 @@
+--- Moi_kollektsii_CP20.html
++++ Moi_kollektsii_FINAL.html
+@@ -20,7 +20,7 @@
+ html[data-mode=light][data-kind=songs]{--accent:#187a56;--secondary:#744aa1;--accentInk:#fff;--faint:#187a5613}
+ *{box-sizing:border-box}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);line-height:1.55}button,input,select{font:inherit}button{cursor:pointer}a{color:inherit}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}button:disabled{opacity:.52;cursor:default}[hidden]{display:none!important}
+ .shell{width:min(1140px,calc(100% - 32px));margin:auto}
+-.nav{background:var(--panel);border-bottom:1px solid var(--border)}.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:76px}.brand{font-weight:830;letter-spacing:-.03em;font-size:17px}.brand small{font-weight:450;display:block;color:var(--muted);font-size:11px;letter-spacing:0}.tabs{display:flex;align-items:center;gap:7px}.tab{display:inline-flex;gap:8px;align-items:center;padding:11px 14px;color:var(--muted);background:transparent;border:1px solid transparent;border-radius:13px;font-size:13px;font-weight:730;white-space:nowrap}.tab:hover{background:var(--panel2)}.tab[aria-selected=true]{background:var(--faint);border-color:var(--accent);color:var(--accent)}.tab .tabcount{font-size:10px;opacity:.8;font-variant-numeric:tabular-nums;font-weight:700}
++.nav{background:var(--panel);border-bottom:1px solid var(--border)}.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:76px}.brand{font-weight:830;letter-spacing:-.03em;font-size:17px}.brand small{font-weight:450;display:block;color:var(--muted);font-size:11px;letter-spacing:0}.tabs{display:flex;align-items:center;gap:7px}.tab{display:inline-flex;gap:8px;align-items:center;padding:11px 14px;color:var(--muted);background:transparent;border:1px solid transparent;border-radius:13px;font-size:13px;font-weight:730;white-space:nowrap}.tab:hover{background:var(--panel2)}.tab .tabcount{font-size:10px;opacity:.8;font-variant-numeric:tabular-nums;font-weight:700}
+ .hero{padding:29px 0 20px}.hero-inner{display:grid;grid-template-columns:minmax(0,1fr) 170px;align-items:center;gap:18px}.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:820;color:var(--accent);margin-bottom:8px}.hero h1{margin:0 0 10px;font-size:clamp(41px,6vw,69px);line-height:1.05;font-weight:840;letter-spacing:-.055em}.hero h1 span{color:var(--accent)}.lead{margin:0;color:var(--muted);max-width:680px;font-size:14px}.art{height:150px;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 34% 25%,var(--hue),var(--panel) 73%);border:1px solid var(--border);border-radius:26px;box-shadow:var(--shadow)}.art:before,.art:after{position:absolute;content:"";pointer-events:none}
+ html[data-kind=songs] .art:before{width:126px;height:126px;border-radius:50%;background:repeating-radial-gradient(circle,#0f1d1b 0px,#10241e 4px,#39564b 5px,#0d1b1a 7px);box-shadow:0 10px 20px #0005}html[data-kind=songs] .art:after{width:33px;height:33px;border-radius:50%;background:var(--accent);border:7px solid #1e5040;box-shadow:0 0 0 5px #225747}
+ .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:16px 0 12px}.stat{border:1px solid var(--border);background:var(--panel);padding:13px 16px;border-radius:14px;min-height:88px}.stat .name{color:var(--muted);font-size:12px;display:block}.stat .value{font-size:29px;font-weight:820;font-variant-numeric:tabular-nums;letter-spacing:-.04em;line-height:1.4}.progressbox{border:1px solid var(--border);border-radius:13px;padding:12px 16px;background:var(--panel);display:flex;align-items:center;gap:13px}.progressrail{height:9px;background:var(--panel2);border-radius:20px;overflow:hidden;flex:1}.progressfill{background:linear-gradient(90deg,var(--accent),var(--secondary));width:0;height:100%;border-radius:20px;transition:width .15s}.progresslabel{white-space:nowrap;font-size:12px;color:var(--accent);font-weight:780}
+@@ -74,7 +74,7 @@
+ .story-box.is-open .story-long{opacity:1;transition:opacity .26s ease .11s}
+ .story-box{transition:height .39s cubic-bezier(.2,.72,.18,1)}
+ /* Swipe follows the finger in real time; CSS isn't used to fake a delayed change. */
+-#catalog{will-change:transform;touch-action:pan-y}@media(max-width:600px){.nav-inner{padding:9px 0 7px}.more{position:absolute;right:0;top:3px}.brand{padding:4px 52px 0}.tabs{padding-top:4px}.more-panel{top:calc(100% + 8px)}.more-panel .actions .btn{flex:auto}}
++@media(max-width:600px){.nav-inner{padding:9px 0 7px}.more{position:absolute;right:0;top:3px}.brand{padding:4px 52px 0}.tabs{padding-top:4px}.more-panel{top:calc(100% + 8px)}.more-panel .actions .btn{flex:auto}}
+ @media(prefers-reduced-motion:reduce){.story-short,.story-long,.app-toast{transition:none!important}}
+ 
+ 
+@@ -99,14 +99,12 @@
+ }
+ html,body{min-height:100%}
+ body{background:linear-gradient(180deg,var(--top-grad) 0%,var(--mid-grad) 42%,var(--bottom-grad) 100%);background-attachment:fixed;-webkit-font-smoothing:antialiased}
+-#catalog{background:transparent;position:relative}
+ .nav{background:var(--nav-bg);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-bottom:1px solid color-mix(in srgb,var(--border) 70%,transparent);box-shadow:0 4px 18px #00000012}
+ .nav-inner{min-height:72px}
+ .brand{font-size:18px;font-weight:800;letter-spacing:-.04em}
+ .brand small{font-size:11px;letter-spacing:.01em;color:var(--muted)}
+ .tabs{position:relative;isolation:isolate;align-items:stretch;gap:5px}
+ .tab{position:relative;z-index:1;border:1px solid transparent!important;border-radius:18px;padding:11px 15px;transition:color .15s ease,transform .17s ease;background:transparent!important}
+-.tab[aria-selected=true]{background:transparent!important;box-shadow:none!important}
+ .tab[data-tab=books][aria-selected=true]{color:#f1c78b}
+ .tab[data-tab=films][aria-selected=true]{color:#ffa994}
+ .tab[data-tab=songs][aria-selected=true]{color:#7bf0bf}
+@@ -139,19 +137,6 @@
+ 
+ /* v6: animated system/manual theme. Transition REGISTERED colors, including
+    the stops of the page gradient. Older browsers get component-color fallback. */
+-@property --bg{syntax:"<color>";inherits:true;initial-value:#0d1420}
+-@property --panel{syntax:"<color>";inherits:true;initial-value:#202d3e}
+-@property --panel2{syntax:"<color>";inherits:true;initial-value:#2c3b4e}
+-@property --border{syntax:"<color>";inherits:true;initial-value:#415166}
+-@property --text{syntax:"<color>";inherits:true;initial-value:#f5f7fa}
+-@property --muted{syntax:"<color>";inherits:true;initial-value:#c0cbda}
+-@property --soft{syntax:"<color>";inherits:true;initial-value:#92a4b9}
+-@property --input{syntax:"<color>";inherits:true;initial-value:#182334}
+-@property --top-grad{syntax:"<color>";inherits:true;initial-value:#334961}
+-@property --mid-grad{syntax:"<color>";inherits:true;initial-value:#1d2b40}
+-@property --bottom-grad{syntax:"<color>";inherits:true;initial-value:#0b111b}
+-@property --nav-bg{syntax:"<color>";inherits:true;initial-value:rgba(22,34,49,.95)}
+-html.theme-ready{transition:--bg .68s cubic-bezier(.22,.7,.17,1),--panel .68s cubic-bezier(.22,.7,.17,1),--panel2 .68s cubic-bezier(.22,.7,.17,1),--border .68s cubic-bezier(.22,.7,.17,1),--text .68s cubic-bezier(.22,.7,.17,1),--muted .68s cubic-bezier(.22,.7,.17,1),--soft .68s cubic-bezier(.22,.7,.17,1),--input .68s cubic-bezier(.22,.7,.17,1),--top-grad .68s cubic-bezier(.22,.7,.17,1),--mid-grad .68s cubic-bezier(.22,.7,.17,1),--bottom-grad .68s cubic-bezier(.22,.7,.17,1),--nav-bg .68s cubic-bezier(.22,.7,.17,1)}
+ /* Fallback and finishing polish for browsers without @property animation */
+ html.theme-ready .stat,html.theme-ready .item,html.theme-ready .progressbox,
+ html.theme-ready .more-panel,html.theme-ready .nav,html.theme-ready .tab-glider,
+@@ -175,7 +160,6 @@
+ 
+ /* v7: composited View Transitions. The browser animates actual before/after
+    snapshots, not a fake seven-item page that jumps on commit. */
+-html.theme-ready{transition:none!important}
+ html.theme-ready .stat,html.theme-ready .item,html.theme-ready .progressbox,
+ html.theme-ready .nav,html.theme-ready .btn,html.theme-ready .mark,
+ html.theme-ready .art{transition-property:none!important}
+@@ -332,9 +316,9 @@
+ .sheet-back:active,.sheet-back:hover{background:var(--panel2)}
+ .sheet-back svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+ .sheet-body{flex:1;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:6px max(16px,calc((100% - 728px)/2)) calc(36px + env(safe-area-inset-bottom))}
+-.seg{display:flex;gap:4px;padding:4px;border-radius:18px;background:color-mix(in srgb,var(--panel) 80%,transparent);border:1px solid color-mix(in srgb,var(--border) 70%,transparent);margin:4px 0 14px}
+-.seg button{flex:1;min-width:0;border:0;background:transparent;color:var(--muted);font-size:12.5px;font-weight:740;padding:9px 4px;border-radius:14px;transition:background-color .2s ease,color .2s ease}
+-.seg button[aria-selected=true],.seg button[aria-checked=true]{background:var(--panel);color:var(--text);box-shadow:0 2px 8px #00000018}
++.seg{display:flex;gap:4px;padding:4px;border-radius:999px;background:color-mix(in srgb,var(--panel) 80%,transparent);border:1px solid color-mix(in srgb,var(--border) 70%,transparent);margin:4px 0 14px}
++.seg button{flex:1;min-width:0;border:0;background:transparent;color:var(--muted);font-size:12.5px;font-weight:740;padding:9px 4px;border-radius:999px;transition:background-color .2s ease,color .2s ease}
++/* CP21: активное состояние сегментов — см. единую систему переключателей в конце стилей. */
+ /* Статистика */
+ .sheet[data-kind=books]{--accent:#deb47a;--secondary:#8fdbc6;--faint:#deb47a20}
+ .sheet[data-kind=films]{--accent:#f19b87;--secondary:#91bdf3;--faint:#f19b8720}
+@@ -441,8 +425,7 @@
+ .hw-row{cursor:default}
+ .hw-row time{white-space:nowrap}
+ /* v13: капсульная плашка активного раздела — мягче обводка и тень */
+-.tab-glider,html .tab-glider{border-radius:999px!important;border-color:color-mix(in srgb,var(--pill-border,#be905c) 55%,transparent);background:var(--pill-bg,rgba(222,180,122,.14));box-shadow:0 1px 3px #0000000d,0 4px 12px #00000010}
+-html[data-mode=dark] .tab-glider{border-color:color-mix(in srgb,var(--pill-border,#be905c) 45%,transparent);box-shadow:0 1px 3px #00000026,0 4px 14px #0000001f}
++.tab-glider,html .tab-glider{border-radius:999px!important;border-color:color-mix(in srgb,var(--pill-border,#be905c) var(--sw-edge-mix),transparent);background:var(--pill-bg,rgba(222,180,122,.14));box-shadow:var(--sw-shadow)}
+ .tab{border-radius:999px!important}
+ /* v14: иконки пунктов меню и настроек — единый размер, мягкие подложки */
+ .btn.with-ico{display:flex!important;align-items:center;gap:11px;text-align:left}
+@@ -516,14 +499,20 @@
+ .next-fab{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:calc(22px + env(safe-area-inset-bottom));z-index:90;display:grid;place-items:center;width:61px;height:61px;padding:0;border:1px solid var(--accent);border-radius:22px;background:var(--accent);color:var(--accentInk);box-shadow:0 11px 28px #0006;touch-action:manipulation}
+ @media(max-width:600px){.next-fab{width:56px;height:56px;border-radius:19px;bottom:calc(18px + env(safe-area-inset-bottom))}}
+ @media(prefers-reduced-motion:reduce){.more-panel,.more-panel .btn{transition:none!important;animation:none!important}}
+-/* CP19: активная категория — существующий акцент, заливка и внутренняя рамка. */
+-#stats-seg button[data-k=books],#history-seg button[data-k=books]{--section-accent:var(--c-books)}
+-#stats-seg button[data-k=films],#history-seg button[data-k=films]{--section-accent:var(--c-films)}
+-#stats-seg button[data-k=songs],#history-seg button[data-k=songs]{--section-accent:var(--c-songs)}
+-#stats-seg button[aria-selected=true],#history-seg button[aria-selected=true]{background:color-mix(in srgb,var(--section-accent) 32%,var(--panel));color:var(--text);box-shadow:inset 0 0 0 2px var(--section-accent),0 2px 8px #00000018}
+-/* CP20: все уровни переключателей — одинаково заметное выделение в цвете текущей категории. */
+-.seg button{transition:background-color .18s ease,color .18s ease,box-shadow .18s ease}
+-#stats-mode button[aria-selected=true],#stats-period button[aria-selected=true],#theme-seg button[aria-checked=true]{background:color-mix(in srgb,var(--accent) 26%,var(--panel));color:var(--text);box-shadow:inset 0 0 0 2px var(--accent),0 2px 8px #00000018}
++/* CP21: единая система переключателей. Основа — капсула «Библиотека / Кинотека / Плейлист»:
++   полупрозрачная заливка, тонкая рамка 1 px, мягкая тень, текст в цвете категории, полное скругление.
++   Те же значения использует JS капсулы главного экрана (tabColors). */
++:root{--sw-edge-mix:55%;--sw-shadow:0 1px 3px #0000000d,0 4px 12px #00000010;
++ --sw-books-edge:#d6a66b;--sw-books-fill:rgba(222,180,122,.15);--sw-books-ink:#85591d;
++ --sw-films-edge:#e99380;--sw-films-fill:rgba(241,155,135,.16);--sw-films-ink:#ad4937;
++ --sw-songs-edge:#5bdba9;--sw-songs-fill:rgba(87,226,171,.15);--sw-songs-ink:#146b4b}
++html[data-mode=dark]{--sw-edge-mix:45%;--sw-shadow:0 1px 3px #00000026,0 4px 14px #0000001f;--sw-books-ink:#f1c78b;--sw-films-ink:#ffa994;--sw-songs-ink:#7bf0bf}
++html[data-kind=books],.sheet[data-kind=books],.seg [data-k=books]{--sw-edge:var(--sw-books-edge);--sw-fill:var(--sw-books-fill);--sw-ink:var(--sw-books-ink)}
++html[data-kind=films],.sheet[data-kind=films],.seg [data-k=films]{--sw-edge:var(--sw-films-edge);--sw-fill:var(--sw-films-fill);--sw-ink:var(--sw-films-ink)}
++html[data-kind=songs],.sheet[data-kind=songs],.seg [data-k=songs]{--sw-edge:var(--sw-songs-edge);--sw-fill:var(--sw-songs-fill);--sw-ink:var(--sw-songs-ink)}
++.seg button{transition:background-color .2s ease,color .15s ease,box-shadow .2s ease,transform .17s ease}
++.seg button[aria-selected=true],.seg button[aria-checked=true]{background:var(--sw-fill);color:var(--sw-ink);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sw-edge) var(--sw-edge-mix),transparent),var(--sw-shadow)}
++.seg button:active{transform:scale(.985)}
+ @media(hover:hover){.seg button:not([aria-selected=true]):not([aria-checked=true]):hover{background:color-mix(in srgb,var(--panel2) 65%,transparent);color:var(--text)}}
+ /* CP20: неактивные каталоги остаются разложенными за пределами сцены (inert, aria-hidden),
+    поэтому в момент фиксации свайпа браузер не раскладывает весь экран заново. */
+@@ -1422,11 +1411,16 @@
+  if(A.cancelledFinishes.some(inP))html+='<p class="st-note">Отменённые позже отметки завершения в подсчёт не входят, но остаются в истории.</p>';
+  return html;
+ }
+-function renderStats(){
++function renderStatsControls(){
+  for(const b of document.querySelectorAll('#stats-mode button'))b.setAttribute('aria-selected',String(b.dataset.m===statsMode));
+  document.getElementById('stats-activity-ctl').hidden=statsMode!=='activity';
+  for(const b of segStats.querySelectorAll('button'))b.setAttribute('aria-selected',String(b.dataset.k===statsKind));
+  segStats.hidden=false;
++ if(statsMode==='activity'){for(const b of document.querySelectorAll('#stats-period button'))b.setAttribute('aria-selected',String(b.dataset.p===periodType));document.getElementById('pn-label').textContent=periodLabel();document.getElementById('period-nav').hidden=periodType==='all';}
++ sheets.stats.dataset.kind=statsKind;
++}
++function renderStats(){
++ renderStatsControls();
+  if(statsMode==='activity')renderActivity();else renderCollection();
+  scheduleSheetGhosts('stats');
+ }
+@@ -1511,10 +1505,29 @@
+   more.textContent='';scheduleSheetGhosts('history');return;
+  }
+  body.innerHTML='';appendHistory(events);
++ observeHistory(events);
++ scheduleSheetGhosts('history');
++}
++function observeHistory(events){
++ const more=document.getElementById('history-more');
+  if(!('IntersectionObserver' in window)){while(historyShown<events.length)appendHistory(events);return;}
+  historyObserver=new IntersectionObserver(en=>{if(en.some(x=>x.isIntersecting))appendHistory(filteredEvents());},{root:sheets.history.querySelector('.sheet-body'),rootMargin:'600px'});
+  historyObserver.observe(more);
+- scheduleSheetGhosts('history');
++}
++// CP21: после завершённого свайпа готовый слой становится содержимым — без повторной отрисовки.
++// Слой построен теми же функциями (activityHTML/collectionHTML/historyPreviewHTML) и сбрасывается при любой перерисовке.
++function adoptSheetGhost(name,k,ghost){
++ const content=sheetContent(name),nodes=[...ghost.childNodes];
++ if(name==='stats'){statsKind=k;renderStatsControls();content.replaceChildren(...nodes);scheduleSheetGhosts('stats');return;}
++ historyFilter=k;sheets.history.dataset.kind=k;
++ for(const b of segHistory.querySelectorAll('button'))b.setAttribute('aria-selected',String(b.dataset.k===k));
++ historyObserver?.disconnect();
++ const events=filteredEvents(),more=document.getElementById('history-more');
++ content.replaceChildren(...nodes);
++ if(!events.length){historyShown=0;historyLastDay=null;more.textContent='';scheduleSheetGhosts('history');return;}
++ historyShown=Math.min(events.length,content.querySelectorAll(':scope > .h-row').length||1);historyLastDay=dayKey(events[events.length-historyShown].ms);
++ more.textContent=historyShown<events.length?'Загружаю ещё…':(events.length>40?'Всего событий: '+fmt(events.length):'');
++ observeHistory(events);scheduleSheetGhosts('history');
+ }
+ function emptyHistoryHTML(){
+  const dl=data.books.filter(d=>d.downloaded).length;
+@@ -1522,9 +1535,10 @@
+  return '<div class="h-empty"><div class="h-empty-icons">'+MINI.books+MINI.films+MINI.songs+'</div><p>'+(history.events.length?'В этом разделе событий пока нет.':'Здесь появятся ваши действия: начатые и прочитанные книги, просмотренные фильмы, прослушанные песни.')+'</p>'+(marked&&!history.events.length?'<p class="h-hint">Отметки, сделанные до появления истории, сохранены без дат — история начнётся со следующего действия.</p>':'')+'</div>';
+ }
+ // Первая страница истории категории без изменения состояния текущего экрана (для свайпа).
+-function historyPreviewHTML(k){
++// CP21: слою достаточно строк, видимых на экране (с запасом); остальные догружаются обычной прокруткой после перехода.
++function historyPreviewHTML(k,rows=80){
+  const events=history.events.filter(e=>e.section===k);
+- return events.length?historyRows(events,0,Math.min(events.length,80),{day:null}):emptyHistoryHTML();
++ return events.length?historyRows(events,0,Math.min(events.length,rows),{day:null}):emptyHistoryHTML();
+ }
+ function appendHistory(events){
+  const more=document.getElementById('history-more');
+@@ -1767,7 +1781,8 @@
+   document.documentElement.dataset.kind=chosen;
+   document.getElementById('csv').hidden=chosen!=='songs';
+   setTools(false);
+-  if(location.hash!=='#'+chosen)window.history.replaceState(window.history.state,'','#'+chosen);
++  // CP21: в непрозрачном источнике (например, content:// на Android) смена адреса может быть запрещена — переход не должен прерываться.
++  try{if(location.hash!=='#'+chosen)window.history.replaceState(window.history.state,'','#'+chosen);}catch(e){}
+  }
+  focusTab(chosen);
+  if(pendingTarget&&pendingTarget!==kind){const target=pendingTarget;pendingTarget=null;requestAnimationFrame(()=>slideTo(target));return;}
+@@ -1918,7 +1933,8 @@
+ function buildGhost(name,k){
+  const body=sheets[name].querySelector('.sheet-body'),content=sheetContent(name),layer=ghostLayer(name);
+  const ghost=document.createElement('div');ghost.className='sheet-ghost';ghost.dataset.kind=k;
+- ghost.innerHTML=name==='stats'?(statsMode==='activity'?activityHTML(k):collectionHTML(k)):historyPreviewHTML(k);
++ const rows=Math.min(80,Math.max(24,Math.ceil((body.scrollTop+body.clientHeight)/40)+8));
++ ghost.innerHTML=name==='stats'?(statsMode==='activity'?activityHTML(k):collectionHTML(k)):historyPreviewHTML(k,rows);
+  ghost.style.left=content.offsetLeft+'px';ghost.style.width=content.offsetWidth+'px';
+  ghost.style.transform='translate3d('+(2*body.clientWidth)+'px,0,0)';
+  layer.append(ghost);
+@@ -1929,13 +1945,16 @@
+  const keep=sheetMotion[name]?.ghost;
+  for(const [k,e] of ghostCache[name])if(e.ghost!==keep){e.ghost.remove();ghostCache[name].delete(k);}
+ }
++const lastSheetDir={stats:1,history:1};
+ function scheduleSheetGhosts(name){
+  clearSheetGhosts(name);
+  if(openSheetName!==name||wantsLessMotion()||(name==='history'&&historyWork))return;
+  // По одной категории на задачу простоя: следующее касание не ждёт сборки обеих.
+- const step=()=>{
+-  ghostIdle[name]=0;if(openSheetName!==name||sheetMotion[name]||(name==='history'&&historyWork))return;
+-  const i=kinds.indexOf(sheetKindOf(name)),k=[kinds[i+1],kinds[i-1]].find(x=>x&&!ghostCache[name].has(x));
++ const step=deadline=>{
++  ghostIdle[name]=0;if(openSheetName!==name||(name==='history'&&historyWork))return;
++  // CP21: сборка не начинается во время движения и не вытесняет кадр анимации — тогда она откладывается, а не отменяется.
++  if(sheetMotion[name]||(deadline&&!deadline.didTimeout&&deadline.timeRemaining()<12)){ghostIdle[name]=idleTask(step);return;}
++  const i=kinds.indexOf(sheetKindOf(name)),d=lastSheetDir[name],k=[kinds[i+d],kinds[i-d]].find(x=>x&&!ghostCache[name].has(x));
+   if(!k)return;buildGhost(name,k);ghostIdle[name]=idleTask(step);
+  };
+  ghostIdle[name]=idleTask(step);
+@@ -1967,11 +1986,14 @@
+  if(sheetMotion[m.name]!==m)return;
+  cancelAnimationFrame(m.raf);sheetMotion[m.name]=null;
+  const {name,body,content}=m;
+- if(m.ghost){m.ghost.remove();ghostCache[name].delete(m.target);}
++ const adopt=commit&&m.target&&openSheetName===name&&!(name==='history'&&historyWork)&&ghostCache[name].get(m.target)?.ghost===m.ghost;
++ if(m.ghost){if(!adopt)m.ghost.remove();ghostCache[name].delete(m.target);}
+  content.style.transform='';body.classList.remove('is-swiping');
+  if(commit&&m.target&&openSheetName===name&&!(name==='history'&&historyWork)){
+   const hadTabFocus=(name==='stats'?segStats:segHistory).contains(document.activeElement);
+-  if(name==='stats'){statsKind=m.target;renderStats();}else{historyFilter=m.target;renderHistory();}
++  lastSheetDir[name]=m.direction;
++  if(adopt){adoptSheetGhost(name,m.target,m.ghost);m.ghost.remove();}
++  else if(name==='stats'){statsKind=m.target;renderStats();}else{historyFilter=m.target;renderHistory();}
+   body.scrollTop=m.newTop;
+   if(hadTabFocus)(name==='stats'?segStats:segHistory).querySelector('[aria-selected="true"]')?.focus({preventScroll:true});
+  }else{previewSheetSeg(name,sheetKindOf(name));if(m.target)scheduleSheetGhosts(name);}
+@@ -1998,7 +2020,9 @@
+ for(const name of ['stats','history']){
+  const body=sheets[name].querySelector('.sheet-body');
+  let swipe=null;
+- const blocked=target=>!(target instanceof Element)||Boolean(target.closest('.seg,.period-nav,input,select,textarea,summary,a[href],canvas,svg.ac-chart,svg.year-strip,[contenteditable],[role="slider"],[role="application"],[data-no-swipe]'));
++ // CP21: свайп можно начинать где угодно на экране, включая переключатели и графики (у них нет собственных жестов);
++ // короткое касание по-прежнему остаётся нажатием. Исключены только элементы ввода и явно помеченные компоненты.
++ const blocked=target=>!(target instanceof Element)||Boolean(target.closest('input,select,textarea,[contenteditable],[role="slider"],[role="application"],[data-no-swipe]'));
+  body.addEventListener('touchstart',e=>{
+   const previous=swipe;swipe=null;
+   if(e.touches.length!==1){if(previous?.motion)settleSheet(previous.motion,false);return;}
+@@ -2007,26 +2031,41 @@
+   if(!running&&blocked(e.target))return;
+   const t=e.touches[0];
+   // Палец может перехватить ещё не завершённое движение и продолжить его без скачка.
++  const caught=running||null;
++  // Палец подхватывает незавершённое движение с его текущего положения (без скачка);
++  // продолжение за конец переводит жест на следующую категорию (см. paintPending).
+   if(running){cancelAnimationFrame(running.raf);running.settling=false;}
+-  swipe={id:t.identifier,x:t.clientX,y:t.clientY,lastX:t.clientX,lastT:e.timeStamp,t0:e.timeStamp,velocity:0,locked:false,motion:running||null,anchor:running?(running.target?running.progress:running.offset):0,resume:running?running.dest:false,reduced:wantsLessMotion(),dx:0,startX:t.clientX,pending:false};
++  swipe={id:t.identifier,x:t.clientX,y:t.clientY,lastX:t.clientX,lastT:e.timeStamp,t0:e.timeStamp,velocity:0,locked:false,motion:caught,anchor:caught?(caught.target?caught.progress:caught.offset):0,resume:caught?caught.dest:false,reduced:wantsLessMotion(),dx:0,startX:t.clientX,top:null,pending:false};
+  },{passive:true});
+  const paintPending=()=>{const g=swipe;if(!g)return;g.pending=false;const m=g.motion;if(!m||sheetMotion[name]!==m)return;
+-  if(m.target)paintSheet(m,g.anchor-(g.dx/m.width)*m.direction);
++  if(m.target){
++   const p=g.anchor-(g.dx/m.width)*m.direction,next=kinds[kinds.indexOf(m.target)+m.direction];
++   // CP21: «протяжка» — если палец довёл переход до конца и тянет дальше, текущее переключение завершается
++   // точно в конечном положении (готовый слой принимается), а движение продолжается к следующей категории.
++   if(p>1&&next&&!g.reduced){paintSheet(m,1);finishSheetMotion(m,true);const nm=beginSheetMotion(name,next);g.motion=nm;g.anchor=Math.min(1,p-1);g.x=g.lastX;g.dx=0;paintSheet(nm,g.anchor);return;}
++   paintSheet(m,p);
++  }
+   else{const raw=g.anchor+g.dx,sign=Math.sign(raw),a=Math.abs(raw);paintSheet(m,sign*Math.min(56,a*.28));}};
+  body.addEventListener('touchmove',e=>{
+   const g=swipe;if(!g)return;
+   if(e.touches.length!==1){swipe=null;if(g.motion)settleSheet(g.motion,g.motion.target?g.motion.progress>=.5:false);return;}
+   const t=e.touches[0];if(t.identifier!==g.id)return;
+   const dx=t.clientX-g.x,dy=t.clientY-g.y;
++  if(g.top===null)g.top=body.scrollTop;
++  // Прокрутку определяет сам браузер (touch-action:pan-y): если содержимое сдвинулось, жест вертикальный.
++  const scrolled=Math.abs(body.scrollTop-g.top)>2;
+   if(!g.locked){
+-   if(Math.abs(dy)>Math.max(8,Math.abs(dx))||!e.cancelable){swipe=null;if(g.motion)settleSheet(g.motion,g.resume);return;}
+-   if(Math.abs(dx)<10||Math.abs(dx)<Math.abs(dy)*1.3)return;
++   // CP21: решение — только после смещения на 12 px, по преобладающему направлению. Ранний вертикальный дрейф
++   // дуги большого пальца и некэнселабельные события после остановки инерционной прокрутки больше не обрывают жест.
++   if(scrolled||(Math.hypot(dx,dy)>=12&&Math.abs(dy)>Math.abs(dx))){swipe=null;if(g.motion)settleSheet(g.motion,g.resume);return;}
++   if(Math.abs(dx)<12||Math.abs(dx)<Math.abs(dy))return;
+    g.locked=true;
+    if(!g.motion&&!g.reduced){const target=kinds[kinds.indexOf(sheetKindOf(name))+(dx<0?1:-1)]||null;g.motion=beginSheetMotion(name,target);}
+    // Порог фиксации не должен давать рывок: движение отсчитывается от точки фиксации.
+    g.x=t.clientX;g.lastX=t.clientX;
+   }
+-  e.preventDefault();
++  if(scrolled&&g.motion){swipe=null;settleSheet(g.motion,false);return;}
++  if(e.cancelable)e.preventDefault();
+   // Время события, а не обработчика: при занятом потоке скорость пальца не занижается.
+   const now=e.timeStamp,dt=Math.max(8,now-g.lastT);
+   g.velocity=.65*g.velocity+.35*((t.clientX-g.lastX)/dt);g.lastX=t.clientX;g.lastT=now;g.dx=t.clientX-g.x;
+@@ -2050,7 +2089,8 @@
+   const m=g.motion;g.dx=t.clientX-g.x;paintPending();
+   if(!m.target){settleSheet(m,false);return;}
+   const forward=-g.velocity*m.direction,travel=-(t.clientX-g.startX)*m.direction,average=travel/Math.max(16,e.timeStamp-g.t0);
+-  const commit=(m.progress>=.4&&forward>-.3)||(forward>.35&&m.progress>.06)||(travel>=48&&average>=.3&&forward>-.1);
++  // CP21: уверенное медленное перетаскивание на треть ширины тоже засчитывается (было 40 %), если палец не вернули назад.
++  const commit=(m.progress>=1/3&&forward>-.2)||(forward>.35&&m.progress>.06)||(travel>=48&&average>=.3&&forward>-.1);
+   settleSheet(m,commit,Math.abs(g.velocity));
+  },{passive:false});
+  body.addEventListener('touchcancel',()=>{const g=swipe;swipe=null;if(g?.motion)settleSheet(g.motion,g.motion.target?g.locked?g.motion.progress>=.5:g.resume:false);},{passive:true});

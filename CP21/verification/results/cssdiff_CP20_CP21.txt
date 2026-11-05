@@ -1,0 +1,22 @@
+states 20 element-state differences 52264
+properties that differ: background-color, border-block-end-color, border-block-start-color, border-bottom-color, border-bottom-left-radius, border-bottom-right-radius, border-end-end-radius, border-end-start-radius, border-inline-end-color, border-inline-start-color, border-left-color, border-right-color, border-start-end-radius, border-start-start-radius, border-top-color, border-top-left-radius, border-top-right-radius, box-shadow, caret-color, color, column-rule-color, outline-color, row-rule-color, text-decoration-color, text-emphasis-color, transition-behavior, transition-delay, transition-duration, transition-property, transition-timing-function, -webkit-text-fill-color, -webkit-text-stroke-color, --border, --bottom-grad, --mid-grad, --panel, --muted, --text, --soft, --nav-bg, --top-grad, --input, --bg, --panel2, --section-accent, --sw-songs-edge, --sw-films-ink, --sw-fill, --sw-books-fill, --sw-songs-fill, --sw-films-edge, --sw-songs-ink, --sw-edge-mix, --sw-books-edge, --sw-books-ink, --sw-ink, --sw-films-fill, --sw-edge, --sw-shadow
+  dark/mobile/catalog-books 2361 elements | theme-ready#0 | BODY#1 | nav#2
+  dark/mobile/catalog-films 2361 elements | theme-ready#0 | BODY#1 | nav#2
+  dark/mobile/menu 2361 elements | theme-ready#0 | BODY#1 | nav#2
+  dark/mobile/stats 2843 elements | theme-ready sheet-open#0 | BODY#1 | nav#2
+  dark/mobile/history 3140 elements | theme-ready sheet-open#0 | BODY#1 | nav#2
+  dark/desktop/catalog-books 2361 elements | theme-ready#0 | BODY#1 | nav#2
+  dark/desktop/catalog-films 2361 elements | theme-ready#0 | BODY#1 | nav#2
+  dark/desktop/menu 2361 elements | theme-ready#0 | BODY#1 | nav#2
+  dark/desktop/stats 2843 elements | theme-ready sheet-open#0 | BODY#1 | nav#2
+  dark/desktop/history 3140 elements | theme-ready sheet-open#0 | BODY#1 | nav#2
+  light/mobile/catalog-books 2361 elements | theme-ready#0 | BODY#1 | nav#2
+  light/mobile/catalog-films 2361 elements | theme-ready#0 | BODY#1 | nav#2
+  light/mobile/menu 2361 elements | theme-ready#0 | BODY#1 | nav#2
+  light/mobile/stats 2843 elements | theme-ready sheet-open#0 | BODY#1 | nav#2
+  light/mobile/history 3140 elements | theme-ready sheet-open#0 | BODY#1 | nav#2
+  light/desktop/catalog-books 2361 elements | theme-ready#0 | BODY#1 | nav#2
+  light/desktop/catalog-films 2361 elements | theme-ready#0 | BODY#1 | nav#2
+  light/desktop/menu 2361 elements | theme-ready#0 | BODY#1 | nav#2
+  light/desktop/stats 2843 elements | theme-ready sheet-open#0 | BODY#1 | nav#2
+  light/desktop/history 3140 elements | theme-ready sheet-open#0 | BODY#1 | nav#2

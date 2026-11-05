@@ -1,0 +1,192 @@
+PASS file:// autonomous open: app initialised, no external requests
+PASS runtime record counts 496/500/500 and tab counters
+PASS 201 embedded book downloads shown and stored; films/songs 0
+PASS clean initial progress and empty history
+PASS unique ids and every aria-controls/aria-labelledby target exists
+PASS inactive catalogs are inert, hidden from a11y, not hit-testable
+PASS idle pre-render: other catalogs have first 24 cards before any swipe
+PASS hidden catalogs do not inflate page scroll height (filter «Брошено»)
+PASS desktop: stats opens on books from its catalog
+PASS desktop: history opens on books from its catalog
+PASS desktop: stats opens on films from its catalog
+PASS desktop: history opens on films from its catalog
+PASS desktop: stats opens on songs from its catalog
+PASS desktop: history opens on songs from its catalog
+PASS desktop: entry during running catalog transition uses the chosen target
+PASS desktop: menu stays open when opened during a transition
+PASS desktop: internal category switch does not change the catalog or the other sheet
+PASS desktop: reopening stats binds to current catalog again
+PASS mobile: stats opens on books from its catalog
+PASS mobile: history opens on books from its catalog
+PASS mobile: stats opens on films from its catalog
+PASS mobile: history opens on films from its catalog
+PASS mobile: stats opens on songs from its catalog
+PASS mobile: history opens on songs from its catalog
+PASS mobile: entry during running catalog transition uses the chosen target
+PASS mobile: menu stays open when opened during a transition
+PASS mobile: internal category switch does not change the catalog or the other sheet
+PASS mobile: reopening stats binds to current catalog again
+PASS unknown initial category (#xyz) defaults to books; #films opens films
+PASS desktop/light: stats levels 1-3 clearly highlighted on books
+PASS desktop/light: stats levels 1-3 clearly highlighted on films
+PASS desktop/light: stats levels 1-3 clearly highlighted on songs
+PASS desktop/light: history category highlight and theme radio highlight
+PASS desktop/light: main capsule and all segment toggles share one style system
+PASS desktop/dark: stats levels 1-3 clearly highlighted on books
+PASS desktop/dark: stats levels 1-3 clearly highlighted on films
+PASS desktop/dark: stats levels 1-3 clearly highlighted on songs
+PASS desktop/dark: history category highlight and theme radio highlight
+PASS desktop/dark: main capsule and all segment toggles share one style system
+PASS mobile/light: stats levels 1-3 clearly highlighted on books
+PASS mobile/light: stats levels 1-3 clearly highlighted on films
+PASS mobile/light: stats levels 1-3 clearly highlighted on songs
+PASS mobile/light: history category highlight and theme radio highlight
+PASS mobile/light: main capsule and all segment toggles share one style system
+PASS mobile/dark: stats levels 1-3 clearly highlighted on books
+PASS mobile/dark: stats levels 1-3 clearly highlighted on films
+PASS mobile/dark: stats levels 1-3 clearly highlighted on songs
+PASS mobile/dark: history category highlight and theme radio highlight
+PASS mobile/dark: main capsule and all segment toggles share one style system
+PASS keyboard: stats category arrows bounded, Home/End, focus kept
+PASS keyboard: history arrows bounded; Escape closes sheet and restores focus
+PASS keyboard: main tabs arrow navigation
+PASS dark: stats swipe left → films, content follows finger without jumps
+PASS dark: stats swipe left → songs, content follows finger without jumps
+PASS dark: stats swipe right → films, content follows finger without jumps
+PASS dark: stats swipe right → books, content follows finger without jumps
+PASS dark: stats edge books → right swipe does nothing, rubber-band returns
+PASS dark: stats edge songs → left swipe does nothing
+PASS dark: stats short tap does not switch category
+PASS dark: stats small slow partial swipe (60px, 700ms) returns smoothly
+PASS dark: stats slow long swipe (190px, 900ms) commits
+PASS dark: stats quick short fling (70px, 70ms) commits
+PASS dark: stats drag out and back (cancelled) keeps category
+PASS dark: stats one very long swipe = one switch
+PASS dark: stats diagonal gesture does not switch
+PASS dark: stats vertical scroll is native and does not switch
+PASS dark: stats touchcancel mid-drag restores state
+PASS dark: stats finger catches the settling animation without a jump
+PASS dark: stats swipe starting on a chart switches category (charts have no own gestures)
+PASS dark: stats swipe starting on a segmented control switches category
+PASS dark: stats swipe preserves scroll (clamped to new content)
+PASS dark: history swipe left → films, content follows finger without jumps
+PASS dark: history swipe left → songs, content follows finger without jumps
+PASS dark: history swipe right → films, content follows finger without jumps
+PASS dark: history swipe right → books, content follows finger without jumps
+PASS dark: history edge books → right swipe does nothing, rubber-band returns
+PASS dark: history edge songs → left swipe does nothing
+PASS dark: history short tap does not switch category
+PASS dark: history small slow partial swipe (60px, 700ms) returns smoothly
+PASS dark: history slow long swipe (190px, 900ms) commits
+PASS dark: history quick short fling (70px, 70ms) commits
+PASS dark: history drag out and back (cancelled) keeps category
+PASS dark: history one very long swipe = one switch
+PASS dark: history diagonal gesture does not switch
+PASS dark: history vertical scroll is native and does not switch
+PASS dark: history touchcancel mid-drag restores state
+PASS dark: history finger catches the settling animation without a jump
+PASS dark: history swipe starting on an event row switches; tap on row opens record
+PASS dark: record view does not swipe categories
+PASS dark: catalog stays unchanged after all sheet swipes
+PASS light: stats swipe left → films, content follows finger without jumps
+PASS light: stats swipe left → songs, content follows finger without jumps
+PASS light: stats swipe right → films, content follows finger without jumps
+PASS light: stats swipe right → books, content follows finger without jumps
+PASS light: stats edge books → right swipe does nothing, rubber-band returns
+PASS light: stats edge songs → left swipe does nothing
+PASS light: stats short tap does not switch category
+PASS light: stats small slow partial swipe (60px, 700ms) returns smoothly
+PASS light: stats slow long swipe (190px, 900ms) commits
+PASS light: stats quick short fling (70px, 70ms) commits
+PASS light: stats drag out and back (cancelled) keeps category
+PASS light: stats one very long swipe = one switch
+PASS light: stats diagonal gesture does not switch
+PASS light: stats vertical scroll is native and does not switch
+PASS light: stats touchcancel mid-drag restores state
+PASS light: stats finger catches the settling animation without a jump
+PASS light: stats swipe starting on a chart switches category (charts have no own gestures)
+PASS light: stats swipe starting on a segmented control switches category
+PASS light: stats swipe preserves scroll (clamped to new content)
+PASS light: history swipe left → films, content follows finger without jumps
+PASS light: history swipe left → songs, content follows finger without jumps
+PASS light: history swipe right → films, content follows finger without jumps
+PASS light: history swipe right → books, content follows finger without jumps
+PASS light: history edge books → right swipe does nothing, rubber-band returns
+PASS light: history edge songs → left swipe does nothing
+PASS light: history short tap does not switch category
+PASS light: history small slow partial swipe (60px, 700ms) returns smoothly
+PASS light: history slow long swipe (190px, 900ms) commits
+PASS light: history quick short fling (70px, 70ms) commits
+PASS light: history drag out and back (cancelled) keeps category
+PASS light: history one very long swipe = one switch
+PASS light: history diagonal gesture does not switch
+PASS light: history vertical scroll is native and does not switch
+PASS light: history touchcancel mid-drag restores state
+PASS light: history finger catches the settling animation without a jump
+PASS light: history swipe starting on an event row switches; tap on row opens record
+PASS light: record view does not swipe categories
+PASS light: catalog stays unchanged after all sheet swipes
+PASS reduced motion: sheet swipe switches instantly, no content animation
+PASS reduced motion: catalog swipe still switches
+PASS catalog: swipe left books → films, right back to books
+PASS catalog: edge (books, swipe right) does not wrap
+PASS catalog: partial drag returns and leaves no transforms
+PASS catalog: vertical scroll native, no switch
+PASS catalog: each catalog keeps its own scroll position
+PASS catalog: cancelled swipe followed by opening the menu keeps the original catalog
+PASS system Back from a record returns to the history list (same category)
+PASS second system Back closes history and returns to the catalog
+PASS in-app back from record → list; Escape from record closes without reopening
+PASS record opened from statistics: in-app back shows history list; close returns to catalog
+PASS «Открыть в каталоге» closes sheet and jumps to the record
+PASS reload with a sheet in history state restores that sheet
+PASS desktop: books reading → read → abandoned are mutually exclusive
+PASS desktop: «Сейчас читаю» card and pager reflect reading books
+PASS desktop: download toggle logs history and keeps 201±1 counts
+PASS desktop: films watching → seen; next card and FAB target advance
+PASS desktop: FAB «следующее» scrolls to the next record
+PASS desktop: songs listened/favorite/added/abandoned interplay
+PASS desktop: filter «Брошено» shows only abandoned, empty message otherwise
+PASS desktop: description expands and collapses
+PASS desktop: copy title button gives feedback
+PASS desktop: many random status toggles keep state consistent
+PASS desktop: reload preserves marks and history exactly
+PASS desktop: statistics «Моя активность» and «Коллекция» reflect actions; all periods render
+PASS desktop: history shows events per category with dates
+PASS mobile: books reading → read → abandoned are mutually exclusive
+PASS mobile: «Сейчас читаю» card and pager reflect reading books
+PASS mobile: download toggle logs history and keeps 201±1 counts
+PASS mobile: films watching → seen; next card and FAB target advance
+PASS mobile: FAB «следующее» scrolls to the next record
+PASS mobile: songs listened/favorite/added/abandoned interplay
+PASS mobile: filter «Брошено» shows only abandoned, empty message otherwise
+PASS mobile: description expands and collapses
+PASS mobile: copy title button gives feedback
+PASS mobile: many random status toggles keep state consistent
+PASS mobile: reload preserves marks and history exactly
+PASS mobile: statistics «Моя активность» and «Коллекция» reflect actions; all periods render
+PASS mobile: history shows events per category with dates
+PASS existing CP19 progress in localStorage is read without reset
+PASS corrupted store: no crash, raw kept in recovery key, notice shown
+PASS corrupted field types are sanitised (non-boolean / unknown ids ignored)
+PASS legacy (pre-CP08) key migrates downloads only, once
+PASS localStorage unavailable: app still works, settings warn
+PASS export backup JSON (schema 4, signatures, history)
+PASS import backup into a fresh profile restores marks and history
+PASS import of invalid / foreign files reports an error and changes nothing
+PASS «Сохранить каталог с отметками»: saved HTML keeps all data blocks byte-identical and embeds marks
+PASS saved HTML opens via file:// in a fresh profile with marks and history
+PASS legacy single-catalog backup (catalogues-v3) restores downloads only
+PASS clear history and per-section reset keep downloads
+PASS theme: light/dark/system choice applied and persisted
+PASS app left open past midnight: «День» in statistics shows the new today
+PASS layout 360px: no horizontal overflow; tabs, sheets and segments fit
+PASS layout 390px: no horizontal overflow; tabs, sheets and segments fit
+PASS layout 736px: no horizontal overflow; tabs, sheets and segments fit
+PASS layout 1024px: no horizontal overflow; tabs, sheets and segments fit
+PASS layout 1280px: no horizontal overflow; tabs, sheets and segments fit
+PASS layout 1440px: no horizontal overflow; tabs, sheets and segments fit
+PASS 10 000 events: loads, history paginates, stats render, toggles stay fast
+PASS no uncaught JavaScript exceptions or console.error in any run
+
+TOTAL 190: 190 PASS, 0 FAIL in 305s

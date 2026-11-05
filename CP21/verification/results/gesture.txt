@@ -1,0 +1,180 @@
+## orig/Moi_kollektsii_CP20.html 0
+OK   stats   1 free area, straight                             books → films
+OK   stats   2 on a tile/row                                   books → films
+MISS stats   3 seg padding area                                books → books
+MISS stats   4 on category toggle                              books → books
+OK   stats   5 right after opening (100 ms)                    books → films
+OK   stats   6 thumb arc, 12px early drift                     books → films
+MISS stats   6b thumb arc, 18px early drift                    books → books
+OK   stats   7 diagonal 30°                                    books → films
+OK   stats   8 after vertical scroll fling                     books → films
+MISS stats   9 during previous settle (2 swipes, 120 ms apart) books → films
+MISS stats   10 slow deliberate (150px / 700ms)                books → books
+OK   stats   11 tap on content must not switch category        books → books
+OK   stats   11b tap on category toggle switches by tap        books → films
+OK   stats   12 vertical scroll must not switch                books → books
+OK   history 1 free area, straight                             books → films
+MISS history 2 on a tile/row                                   ? → ERROR Cannot read properties of null (reading 'r')
+MISS history 3 seg padding area                                books → books
+MISS history 4 on category toggle                              books → books
+OK   history 5 right after opening (100 ms)                    books → films
+OK   history 6 thumb arc, 12px early drift                     books → films
+MISS history 6b thumb arc, 18px early drift                    books → books
+OK   history 7 diagonal 30°                                    books → films
+OK   history 8 after vertical scroll fling                     books → films
+MISS history 9 during previous settle (2 swipes, 120 ms apart) books → films
+MISS history 10 slow deliberate (150px / 700ms)                books → books
+MISS history 11 tap on content must not switch category        ? → ERROR Cannot read properties of null (reading 'x')
+OK   history 11b tap on category toggle switches by tap        books → films
+OK   history 12 vertical scroll must not switch                books → books
+TOTAL 16/28
+## app.html 0
+OK   stats   1 free area, straight                             books → films
+OK   stats   2 on a tile/row                                   books → films
+OK   stats   3 seg padding area                                books → films
+OK   stats   4 on category toggle                              books → films
+OK   stats   5 right after opening (100 ms)                    books → films
+OK   stats   6 thumb arc, 12px early drift                     books → films
+OK   stats   6b thumb arc, 18px early drift                    books → films
+OK   stats   7 diagonal 30°                                    books → films
+OK   stats   8 after vertical scroll fling                     books → films
+OK   stats   9 during previous settle (2 swipes, 120 ms apart) books → songs
+OK   stats   10 slow deliberate (150px / 700ms)                books → films
+OK   stats   11 tap on content must not switch category        books → books
+OK   stats   11b tap on category toggle switches by tap        books → films
+OK   stats   12 vertical scroll must not switch                books → books
+OK   history 1 free area, straight                             books → films
+MISS history 2 on a tile/row                                   ? → ERROR Cannot read properties of null (reading 'r')
+OK   history 3 seg padding area                                books → films
+OK   history 4 on category toggle                              books → films
+OK   history 5 right after opening (100 ms)                    books → films
+OK   history 6 thumb arc, 12px early drift                     books → films
+OK   history 6b thumb arc, 18px early drift                    books → films
+OK   history 7 diagonal 30°                                    books → films
+OK   history 8 after vertical scroll fling                     books → films
+OK   history 9 during previous settle (2 swipes, 120 ms apart) books → songs
+OK   history 10 slow deliberate (150px / 700ms)                books → films
+MISS history 11 tap on content must not switch category        ? → ERROR Cannot read properties of null (reading 'x')
+OK   history 11b tap on category toggle switches by tap        books → films
+OK   history 12 vertical scroll must not switch                books → books
+TOTAL 26/28
+## orig/Moi_kollektsii_CP20.html 300
+OK   stats   1 free area, straight                             books → films
+OK   stats   2 on a tile/row                                   books → films
+MISS stats   3 seg padding area                                books → books
+MISS stats   4 on category toggle                              books → books
+OK   stats   5 right after opening (100 ms)                    books → films
+OK   stats   6 thumb arc, 12px early drift                     books → films
+MISS stats   6b thumb arc, 18px early drift                    books → books
+OK   stats   7 diagonal 30°                                    books → films
+MISS stats   8 after vertical scroll fling                     books → books
+MISS stats   9 during previous settle (2 swipes, 120 ms apart) books → films
+MISS stats   10 slow deliberate (150px / 700ms)                books → books
+OK   stats   11 tap on content must not switch category        books → books
+OK   stats   11b tap on category toggle switches by tap        books → films
+OK   stats   12 vertical scroll must not switch                books → books
+OK   history 1 free area, straight                             books → films
+OK   history 2 on a tile/row                                   books → films
+MISS history 3 seg padding area                                books → books
+MISS history 4 on category toggle                              books → books
+OK   history 5 right after opening (100 ms)                    books → films
+OK   history 6 thumb arc, 12px early drift                     books → films
+MISS history 6b thumb arc, 18px early drift                    books → books
+OK   history 7 diagonal 30°                                    books → films
+MISS history 8 after vertical scroll fling                     books → books
+MISS history 9 during previous settle (2 swipes, 120 ms apart) books → films
+MISS history 10 slow deliberate (150px / 700ms)                books → books
+OK   history 11 tap on content must not switch category        books → books
+OK   history 11b tap on category toggle switches by tap        books → films
+OK   history 12 vertical scroll must not switch                books → books
+TOTAL 16/28
+## app.html 300
+OK   stats   1 free area, straight                             books → films
+OK   stats   2 on a tile/row                                   books → films
+OK   stats   3 seg padding area                                books → films
+OK   stats   4 on category toggle                              books → films
+OK   stats   5 right after opening (100 ms)                    books → films
+OK   stats   6 thumb arc, 12px early drift                     books → films
+OK   stats   6b thumb arc, 18px early drift                    books → films
+OK   stats   7 diagonal 30°                                    books → films
+OK   stats   8 after vertical scroll fling                     books → films
+OK   stats   9 during previous settle (2 swipes, 120 ms apart) books → songs
+OK   stats   10 slow deliberate (150px / 700ms)                books → films
+OK   stats   11 tap on content must not switch category        books → books
+OK   stats   11b tap on category toggle switches by tap        books → films
+OK   stats   12 vertical scroll must not switch                books → books
+OK   history 1 free area, straight                             books → films
+OK   history 2 on a tile/row                                   books → films
+OK   history 3 seg padding area                                books → films
+OK   history 4 on category toggle                              books → films
+OK   history 5 right after opening (100 ms)                    books → films
+OK   history 6 thumb arc, 12px early drift                     books → films
+OK   history 6b thumb arc, 18px early drift                    books → films
+OK   history 7 diagonal 30°                                    books → films
+OK   history 8 after vertical scroll fling                     books → films
+OK   history 9 during previous settle (2 swipes, 120 ms apart) books → songs
+OK   history 10 slow deliberate (150px / 700ms)                books → films
+OK   history 11 tap on content must not switch category        books → books
+OK   history 11b tap on category toggle switches by tap        books → films
+OK   history 12 vertical scroll must not switch                books → books
+TOTAL 28/28
+## orig/Moi_kollektsii_CP20.html 3000
+OK   stats   1 free area, straight                             books → films
+OK   stats   2 on a tile/row                                   books → films
+MISS stats   3 seg padding area                                books → books
+MISS stats   4 on category toggle                              books → books
+OK   stats   5 right after opening (100 ms)                    books → films
+OK   stats   6 thumb arc, 12px early drift                     books → films
+MISS stats   6b thumb arc, 18px early drift                    books → books
+OK   stats   7 diagonal 30°                                    books → films
+MISS stats   8 after vertical scroll fling                     books → books
+MISS stats   9 during previous settle (2 swipes, 120 ms apart) books → films
+MISS stats   10 slow deliberate (150px / 700ms)                books → books
+OK   stats   11 tap on content must not switch category        books → books
+OK   stats   11b tap on category toggle switches by tap        books → films
+OK   stats   12 vertical scroll must not switch                books → books
+OK   history 1 free area, straight                             books → films
+OK   history 2 on a tile/row                                   books → films
+MISS history 3 seg padding area                                books → books
+MISS history 4 on category toggle                              books → books
+OK   history 5 right after opening (100 ms)                    books → films
+OK   history 6 thumb arc, 12px early drift                     books → films
+MISS history 6b thumb arc, 18px early drift                    books → books
+OK   history 7 diagonal 30°                                    books → films
+MISS history 8 after vertical scroll fling                     books → books
+MISS history 9 during previous settle (2 swipes, 120 ms apart) books → films
+MISS history 10 slow deliberate (150px / 700ms)                books → books
+OK   history 11 tap on content must not switch category        books → books
+OK   history 11b tap on category toggle switches by tap        books → films
+OK   history 12 vertical scroll must not switch                books → books
+TOTAL 16/28
+## app.html 3000
+OK   stats   1 free area, straight                             books → films
+OK   stats   2 on a tile/row                                   books → films
+OK   stats   3 seg padding area                                books → films
+OK   stats   4 on category toggle                              books → films
+OK   stats   5 right after opening (100 ms)                    books → films
+OK   stats   6 thumb arc, 12px early drift                     books → films
+OK   stats   6b thumb arc, 18px early drift                    books → films
+OK   stats   7 diagonal 30°                                    books → films
+OK   stats   8 after vertical scroll fling                     books → films
+OK   stats   9 during previous settle (2 swipes, 120 ms apart) books → songs
+OK   stats   10 slow deliberate (150px / 700ms)                books → films
+OK   stats   11 tap on content must not switch category        books → books
+OK   stats   11b tap on category toggle switches by tap        books → films
+OK   stats   12 vertical scroll must not switch                books → books
+OK   history 1 free area, straight                             books → films
+OK   history 2 on a tile/row                                   books → films
+OK   history 3 seg padding area                                books → films
+OK   history 4 on category toggle                              books → films
+OK   history 5 right after opening (100 ms)                    books → films
+OK   history 6 thumb arc, 12px early drift                     books → films
+OK   history 6b thumb arc, 18px early drift                    books → films
+OK   history 7 diagonal 30°                                    books → films
+OK   history 8 after vertical scroll fling                     books → films
+OK   history 9 during previous settle (2 swipes, 120 ms apart) books → songs
+OK   history 10 slow deliberate (150px / 700ms)                books → films
+OK   history 11 tap on content must not switch category        books → books
+OK   history 11b tap on category toggle switches by tap        books → films
+OK   history 12 vertical scroll must not switch                books → books
+TOTAL 28/28
