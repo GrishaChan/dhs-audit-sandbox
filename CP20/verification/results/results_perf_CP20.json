@@ -1,0 +1,130 @@
+{
+ "label": "CP20",
+ "loadMs": {
+  "domContentLoadedMedian": 175,
+  "loadMedian": 176
+ },
+ "heapMB": 9.5,
+ "domNodes": 1053,
+ "throttle": "4x CPU",
+ "renderMs_throttled": {
+  "openStats": 68.6,
+  "statsCategorySwitch": 38.3,
+  "statsCollectionMode": 50.5,
+  "openHistory": 51.7,
+  "historyCategorySwitch": 37.7
+ },
+ "markToggleMs_3000events_throttled": 60.7,
+ "statsSwipe": {
+  "switchedTo": "films",
+  "dragFrames": 12,
+  "dragFramesWithContentMotion": 8,
+  "maxIncomingJumpPx": 27.5,
+  "fingerPxPerFrame": 14.1,
+  "firstSettleFramesMaxPx": 13.8,
+  "gapsDetail": [
+   {
+    "atMsFromRelease": 712,
+    "gap": 50,
+    "incomingXBefore": 16,
+    "incomingXAfter": 16,
+    "kindAfter": "films"
+   }
+  ],
+  "maxFrameGapDuringMotionMs": 50,
+  "framesOver34msDuringMotion": 1,
+  "settleAfterReleaseMs": 712,
+  "maxFrameGapAfterSettleMs": 33.4,
+  "maxFrameGapMs": 50,
+  "framesOver34ms": 1,
+  "longTasks": [],
+  "maxScrollJumpPx": 0
+ },
+ "historySwipe": {
+  "switchedTo": "films",
+  "dragFrames": 12,
+  "dragFramesWithContentMotion": 8,
+  "maxIncomingJumpPx": 27.5,
+  "fingerPxPerFrame": 14.1,
+  "firstSettleFramesMaxPx": 13.8,
+  "gapsDetail": [
+   {
+    "atMsFromRelease": 712,
+    "gap": 50,
+    "incomingXBefore": 16,
+    "incomingXAfter": 16,
+    "kindAfter": "films"
+   }
+  ],
+  "maxFrameGapDuringMotionMs": 50.1,
+  "framesOver34msDuringMotion": 1,
+  "settleAfterReleaseMs": 712,
+  "maxFrameGapAfterSettleMs": 33.3,
+  "maxFrameGapMs": 50.1,
+  "framesOver34ms": 1,
+  "longTasks": [],
+  "maxScrollJumpPx": 0
+ },
+ "historySwipeBack": {
+  "switchedTo": "books",
+  "dragFrames": 13,
+  "dragFramesWithContentMotion": 11,
+  "maxIncomingJumpPx": 17.2,
+  "fingerPxPerFrame": 14.1,
+  "firstSettleFramesMaxPx": 13.8,
+  "gapsDetail": [],
+  "maxFrameGapDuringMotionMs": 33.4,
+  "framesOver34msDuringMotion": 0,
+  "settleAfterReleaseMs": 700,
+  "maxFrameGapAfterSettleMs": 33.3,
+  "maxFrameGapMs": 33.4,
+  "framesOver34ms": 0,
+  "longTasks": [],
+  "maxScrollJumpPx": 0
+ },
+ "historySwipeImmediate": {
+  "switchedTo": "films",
+  "dragFrames": 13,
+  "dragFramesWithContentMotion": 8,
+  "maxIncomingJumpPx": 27.5,
+  "fingerPxPerFrame": 14.1,
+  "firstSettleFramesMaxPx": 13.8,
+  "gapsDetail": [],
+  "maxFrameGapDuringMotionMs": 33.4,
+  "framesOver34msDuringMotion": 0,
+  "settleAfterReleaseMs": 701,
+  "maxFrameGapAfterSettleMs": 16.7,
+  "maxFrameGapMs": 33.4,
+  "framesOver34ms": 0,
+  "longTasks": [],
+  "maxScrollJumpPx": 0
+ },
+ "statsSwipeImmediate": {
+  "switchedTo": "films",
+  "dragFrames": 13,
+  "dragFramesWithContentMotion": 8,
+  "maxIncomingJumpPx": 27.5,
+  "fingerPxPerFrame": 14.1,
+  "firstSettleFramesMaxPx": 13.8,
+  "gapsDetail": [
+   {
+    "atMsFromRelease": 753,
+    "gap": 83,
+    "incomingXBefore": 16,
+    "incomingXAfter": 16,
+    "kindAfter": "films"
+   }
+  ],
+  "maxFrameGapDuringMotionMs": 83.4,
+  "framesOver34msDuringMotion": 1,
+  "settleAfterReleaseMs": 753,
+  "maxFrameGapAfterSettleMs": 16.7,
+  "maxFrameGapMs": 83.4,
+  "framesOver34ms": 1,
+  "longTasks": [
+   85
+  ],
+  "maxScrollJumpPx": 0
+ },
+ "errors": []
+}

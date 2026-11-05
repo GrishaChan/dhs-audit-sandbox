@@ -1,0 +1,581 @@
+--- Moi_kollektsii_CP19.html
++++ Moi_kollektsii_FINAL.html
+@@ -521,6 +521,28 @@
+ #stats-seg button[data-k=films],#history-seg button[data-k=films]{--section-accent:var(--c-films)}
+ #stats-seg button[data-k=songs],#history-seg button[data-k=songs]{--section-accent:var(--c-songs)}
+ #stats-seg button[aria-selected=true],#history-seg button[aria-selected=true]{background:color-mix(in srgb,var(--section-accent) 32%,var(--panel));color:var(--text);box-shadow:inset 0 0 0 2px var(--section-accent),0 2px 8px #00000018}
++/* CP20: все уровни переключателей — одинаково заметное выделение в цвете текущей категории. */
++.seg button{transition:background-color .18s ease,color .18s ease,box-shadow .18s ease}
++#stats-mode button[aria-selected=true],#stats-period button[aria-selected=true],#theme-seg button[aria-checked=true]{background:color-mix(in srgb,var(--accent) 26%,var(--panel));color:var(--text);box-shadow:inset 0 0 0 2px var(--accent),0 2px 8px #00000018}
++@media(hover:hover){.seg button:not([aria-selected=true]):not([aria-checked=true]):hover{background:color-mix(in srgb,var(--panel2) 65%,transparent);color:var(--text)}}
++/* CP20: неактивные каталоги остаются разложенными за пределами сцены (inert, aria-hidden),
++   поэтому в момент фиксации свайпа браузер не раскладывает весь экран заново. */
++#catalog-stage{overflow:clip}@supports not (overflow:clip){#catalog-stage{overflow:hidden}}
++.cached-screen:not(.current):not(.animating){display:block;position:absolute;inset:0 auto auto 0;width:100%;transform:translate3d(-300vw,0,0);pointer-events:none;contain:layout style paint}
++@media print{.cached-screen:not(.current){display:none!important}}
++/* CP20: свайп статистики и истории следует за пальцем; вертикаль остаётся нативной. */
++.sheet-body{position:relative;overflow-x:hidden;touch-action:pan-y pinch-zoom}
++.sheet-ghost-layer{position:absolute;left:0;right:0;overflow:hidden;pointer-events:none;z-index:1}
++.sheet-ghost{position:absolute;top:0;pointer-events:none;will-change:transform;backface-visibility:hidden;contain:layout style paint}
++.sheet-body.is-swiping #stats-body,.sheet-body.is-swiping #history-body{will-change:transform;backface-visibility:hidden}
++.sheet-body.is-swiping .history-more{visibility:hidden}
++.sheet-body.is-swiping button:active{transform:none}
++.sheet-ghost[data-kind=books]{--accent:#deb47a;--secondary:#8fdbc6;--faint:#deb47a20}
++.sheet-ghost[data-kind=films]{--accent:#f19b87;--secondary:#91bdf3;--faint:#f19b8720}
++.sheet-ghost[data-kind=songs]{--accent:#57e2ab;--secondary:#d5aaff;--faint:#57e2ab1d}
++html[data-mode=light] .sheet-ghost[data-kind=books]{--accent:#906027;--faint:#90602713}
++html[data-mode=light] .sheet-ghost[data-kind=films]{--accent:#a34b3b;--faint:#a34b3b13}
++html[data-mode=light] .sheet-ghost[data-kind=songs]{--accent:#187a56;--faint:#187a5613}
+ </style>
+ </head>
+ <body>
+@@ -800,8 +822,13 @@
+  try{localStorage.setItem(storeKey,JSON.stringify({version:1,schema:4,resetRevision:CLEAN_REVISION,state,flags,mode,themeChoice,updatedAt:new Date().toISOString()}));localStorage.setItem(storeKey+'-theme-choice',JSON.stringify(themeChoice));storageOK=true;}
+  catch(e){storageOK=false;}
+ }
++// CP20: повторный разбор хранилища нужен, только если его изменила другая вкладка.
++let historyRawWritten=null;
+ function persistHistory(replace=false){
+- try{if(!replace)history=mergeHistory(tidyHistory(readStored(historyKey)),history);localStorage.setItem(historyKey,JSON.stringify(history));}
++ try{
++  if(!replace){let raw=null;try{raw=localStorage.getItem(historyKey);}catch(e){}if(raw===null||raw!==historyRawWritten)history=mergeHistory(tidyHistory(readStored(historyKey)),history);}
++  const text=JSON.stringify(history);localStorage.setItem(historyKey,text);historyRawWritten=text;
++ }
+  catch(e){storageOK=false;}
+ }
+ 
+@@ -1158,17 +1185,18 @@
+  if(wasOpen){if(wasOpen===name)return;const old=sheets[wasOpen];old.classList.remove('open');old.hidden=true;openSheetName=null;}
+  setTools(false);clearTimeout(sheetCloseTimer);
+  const s=sheets[name];openSheetName=name;
+- if(name==='stats'){statsKind=catalogKindForSheet();renderStats();}
++ // CP20: пока пользователь сам не выбрал период, «сегодня» пересчитывается при каждом открытии.
++ if(name==='stats'){statsKind=catalogKindForSheet();if(periodAnchorAuto)periodAnchor=new Date();renderStats();}
+  if(name==='history'){historyFilter=catalogKindForSheet();hideWorkHistory();renderHistory();}
+  if(name==='settings')renderSettings();
+  s.hidden=false;s.querySelector('.sheet-body').scrollTop=0;
+  document.documentElement.classList.add('sheet-open');sheetBackground(true);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>s.classList.add('open')));
+- try{if(navigate){if(window.history.state?.sheet)window.history.replaceState({sheet:name},'',location.href);else window.history.pushState({sheet:name},'',location.href);}}catch(e){}
++ try{if(navigate){const st=window.history.state;if(st?.sheet)window.history.replaceState({sheet:name,depth:st.depth||1},'',location.href);else window.history.pushState({sheet:name,depth:1},'',location.href);}}catch(e){}
+  s.querySelector('.sheet-back').focus({preventScroll:true});
+ }
+ function hideSheet(){
+- const name=openSheetName;if(!name)return;openSheetName=null;
++ const name=openSheetName;if(!name)return;abortSheetMotion();openSheetName=null;if(ghostCache[name])clearSheetGhosts(name);
+  const s=sheets[name];s.classList.remove('open');
+  document.documentElement.classList.remove('sheet-open');sheetBackground(false);if(sheetReturnFocus?.isConnected)sheetReturnFocus.focus({preventScroll:true});
+  clearTimeout(sheetCloseTimer);
+@@ -1177,10 +1205,22 @@
+ }
+ function closeSheet(){
+  if(!openSheetName)return;
+- if(window.history.state?.sheet){hideSheet();window.history.back();}
++ const st=window.history.state;
++ // CP20: экран записи истории добавляет свой шаг — закрытие возвращает на исходную запись навигации.
++ if(st?.sheet){hideSheet();window.history.go(-(Number.isInteger(st.depth)&&st.depth>0&&st.depth<4?st.depth:1));}
+  else hideSheet();
+ }
+-window.addEventListener('popstate',()=>{const name=window.history.state?.sheet;if(sheets[name])openSheet(name,false);else if(openSheetName)hideSheet();});
++window.addEventListener('popstate',()=>{
++ const st=window.history.state,name=st?.sheet;
++ abortSheetMotion();
++ if(name==='history'&&openSheetName==='history'){
++  if(st.work){if(!historyWork||historyWork.k!==st.work.k||historyWork.id!==String(st.work.id))showWorkHistory(st.work.k,st.work.id);}
++  else if(historyWork){hideWorkHistory();renderHistory();}
++  return;
++ }
++ if(sheets[name]){openSheet(name,false);if(name==='history'&&st.work)showWorkHistory(st.work.k,st.work.id);}
++ else if(openSheetName)hideSheet();
++});
+ document.addEventListener('keydown',e=>{
+  if(e.key!=='Tab'||!openSheetName)return;
+  const s=sheets[openSheetName],nodes=[...s.querySelectorAll('button:not(:disabled),a[href],input,select,summary,[tabindex="0"]')].filter(n=>n.getClientRects().length&&!n.closest('[hidden]'));
+@@ -1189,20 +1229,37 @@
+  else if(!e.shiftKey&&(document.activeElement===last||!s.contains(document.activeElement))){first.focus();e.preventDefault();}
+ });
+ for(const b of document.querySelectorAll('[data-sheet]'))b.addEventListener('click',()=>openSheet(b.dataset.sheet));
+-for(const s of Object.values(sheets))s.querySelector('.sheet-back').addEventListener('click',()=>{if(s===sheets.history&&historyWork){hideWorkHistory();renderHistory();return;}closeSheet();});
+-function hideSheetNow(){if(!openSheetName)return;const old=sheets[openSheetName];old.classList.remove('open');old.hidden=true;openSheetName=null;}
++for(const s of Object.values(sheets))s.querySelector('.sheet-back').addEventListener('click',()=>{
++ if(s===sheets.history&&historyWork){
++  const st=window.history.state;
++  if(st?.work&&st.pushed){window.history.back();return;}
++  hideWorkHistory();renderHistory();
++  try{if(st?.work)window.history.replaceState({sheet:'history',depth:st.depth||1},'',location.href);}catch(e){}
++  return;
++ }
++ closeSheet();
++});
++function hideSheetNow(){if(!openSheetName)return;if(ghostCache[openSheetName])clearSheetGhosts(openSheetName);const old=sheets[openSheetName];old.classList.remove('open');old.hidden=true;openSheetName=null;}
+ 
+ /* ---- Статистика ---- */
+-let statsKind='books',statsMode='activity',periodType='month',periodAnchor=new Date();
++let statsKind='books',statsMode='activity',periodType='month',periodAnchor=new Date(),periodAnchorAuto=true;
+ const segStats=document.getElementById('stats-seg');
+ segStats.addEventListener('click',e=>{const b=e.target.closest('button[data-k]');if(!b)return;switchSheetKind('stats',b.dataset.k);});
+ document.getElementById('stats-mode').addEventListener('click',e=>{const b=e.target.closest('button[data-m]');if(!b)return;statsMode=b.dataset.m;renderStats();sheets.stats.querySelector('.sheet-body').scrollTop=0;});
+ document.getElementById('stats-period').addEventListener('click',e=>{const b=e.target.closest('button[data-p]');if(!b)return;periodType=b.dataset.p;renderStats();});
+-document.getElementById('pn-prev').addEventListener('click',()=>{shiftPeriod(-1);renderStats();});
+-document.getElementById('pn-next').addEventListener('click',()=>{shiftPeriod(1);renderStats();});
++document.getElementById('pn-prev').addEventListener('click',()=>{periodAnchorAuto=false;shiftPeriod(-1);renderStats();});
++document.getElementById('pn-next').addEventListener('click',()=>{periodAnchorAuto=false;shiftPeriod(1);renderStats();});
+ function shiftPeriod(dir){const a=new Date(periodAnchor);if(periodType==='day')a.setDate(a.getDate()+dir);else if(periodType==='month'){a.setDate(1);a.setMonth(a.getMonth()+dir);}else if(periodType==='year')a.setFullYear(a.getFullYear()+dir);periodAnchor=a;}
+ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
+ const fmt=n=>n.toLocaleString('ru-RU');
++// CP20: форматтеры дат создаются один раз (toLocale*String создаёт новый Intl-объект при каждом вызове;
++// при длинной истории это занимало секунды). Результат форматирования идентичен.
++const dateFmt={
++ time:new Intl.DateTimeFormat('ru-RU',{hour:'2-digit',minute:'2-digit'}),
++ dayShort:new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'short'}),
++ dayLong:new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long'}),
++ dayLongYear:new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',year:'numeric'})
++};
+ function group(list,keyFn,k){
+  const m=new Map();
+  for(const d of list){const keys=[].concat(keyFn(d));for(const key of keys){const g=m.get(key)||{key,total:0,done:0,active:0,abandoned:0};g.total++;if(isDone(k,d))g.done++;if(isActive(k,d))g.active++;if(isAbandoned(k,d))g.abandoned++;m.set(key,g);}}
+@@ -1284,7 +1341,7 @@
+  const h=Math.floor(m/60),mm=m%60;if(h<48)return h+' ч'+(mm?' '+mm+' мин':'');
+  const d=Math.floor(h/24),hh=h%24;return d+' дн.'+(hh?' '+hh+' ч':'');
+ }
+-const shortDate=ms=>new Date(ms).toLocaleDateString('ru-RU',{day:'numeric',month:'short'})+' '+timeOf(ms);
++const shortDate=ms=>dateFmt.dayShort.format(ms)+' '+timeOf(ms);
+ function activityBuckets(items){
+  // items: [{section,ms}] → столбцы по месяцам (год), дням (месяц), часам (день) или годам (всё время)
+  const a=periodAnchor;let buckets=[];
+@@ -1296,7 +1353,7 @@
+  for(const it of items){const b=buckets.find(b=>it.ms>=b.s&&it.ms<b.e);if(b)b.c[it.section]++;}
+  return buckets;
+ }
+-function activityChart(items,title){
++function activityChart(items,title,k=statsKind){
+  const buckets=activityBuckets(items);
+  const totals=buckets.map(b=>b.c.books+b.c.films+b.c.songs),peak=Math.max(1,...totals);
+  const n=buckets.length,W=320,H=96,gap=n>20?1:2,bw=(W-gap*(n-1))/n;
+@@ -1311,17 +1368,20 @@
+  });
+  const step=n>24?Math.ceil(n/6):n>12?Math.ceil(n/8):1;
+  const ticks=buckets.map((b,i)=>i%step===0||i===n-1?'<span style="left:'+((i*(bw+gap)+bw/2)/W*100).toFixed(2)+'%">'+esc(b.label)+'</span>':'').join('');
+- return '<section class="st-card"><h3>'+title+'</h3><div class="st-legend"><span><i style="background:var(--c-'+statsKind+')"></i>'+shortNames[statsKind].toLowerCase()+'</span></div><svg class="ac-chart" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" role="img" aria-label="'+esc(title)+'">'+svg+'</svg><div class="ac-ticks">'+ticks+'</div></section>';
++ return '<section class="st-card"><h3>'+title+'</h3><div class="st-legend"><span><i style="background:var(--c-'+k+')"></i>'+shortNames[k].toLowerCase()+'</span></div><svg class="ac-chart" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" role="img" aria-label="'+esc(title)+'">'+svg+'</svg><div class="ac-ticks">'+ticks+'</div></section>';
+ }
+ function renderActivity(){
+  for(const b of document.querySelectorAll('#stats-period button'))b.setAttribute('aria-selected',String(b.dataset.p===periodType));
+  document.getElementById('pn-label').textContent=periodLabel();
+  document.getElementById('period-nav').hidden=periodType==='all';
+- const k=statsKind,[from,to]=periodRange(),inP=x=>x.section===k&&x.ms>=from&&x.ms<to;
++ sheets.stats.dataset.kind=statsKind;
++ document.getElementById('stats-body').innerHTML=activityHTML(statsKind);
++}
++// CP20: чистая функция разметки — используется и для текущей, и для соседней категории при свайпе.
++function activityHTML(k){
++ const [from,to]=periodRange(),inP=x=>x.section===k&&x.ms>=from&&x.ms<to;
+  const A=activityData();
+  const starts=A.starts.filter(inP),fin=A.finishes.filter(inP),lis=A.listens.filter(inP),fa=A.favAdds.filter(inP),fr=A.favRemoves.filter(inP),ab=A.abandons.filter(inP),removed=A.abandonRemoves.filter(inP);
+- sheets.stats.dataset.kind=k;
+- const body=document.getElementById('stats-body');
+  const tiles=k==='books'?[['Книг начато',starts.length,k],['Книг прочитано',fin.length,k]]:k==='films'?[['Фильмов начато',starts.length,k],['Фильмов просмотрено',fin.length,k]]:[['Песен прослушано',lis.length,k],['Добавлено в избранное',fa.length,k],['Убрано из избранного',fr.length,k]];
+  tiles.push([abandonedLabels[k],ab.length,k],['Снята отметка «Брошено»',removed.length,k]);
+  const now=k==='books'?[['Читаю сейчас',countField(k,'reading'),k]]:k==='films'?[['Смотрю сейчас',countField(k,'watching'),k]]:[['В избранном сейчас',countField(k,'favorite'),k]];
+@@ -1330,12 +1390,12 @@
+  html+='<h3 class="act-h">Сейчас</h3><div class="st-tiles act-now">'+now.map(([n,v,c])=>'<div class="st-tile act-'+c+'"><span>'+n+'</span><b>'+v+'</b></div>').join('')+'</div>';
+  if(!history.events.some(e=>e.section===k)){
+   html+='<div class="h-empty"><p>Личная статистика строится по реальным действиям с датой и временем. Отметки, поставленные до появления истории, сохранены без дат и сюда не попадают.</p></div>';
+-  body.innerHTML=html;return;
++  return html;
+  }
+  const doneItems=[...fin.map(f=>({section:f.section,ms:f.ms})),...lis.map(l=>({section:l.section,ms:l.ms}))];
+- html+=activityChart(doneItems,'Динамика завершений');
+- if(starts.length)html+=activityChart(starts,'Начатые '+(k==='books'?'книги':'фильмы'));
+- if(ab.length)html+=activityChart(ab,'Брошено за период');
++ html+=activityChart(doneItems,'Динамика завершений',k);
++ if(starts.length)html+=activityChart(starts,'Начатые '+(k==='books'?'книги':'фильмы'),k);
++ if(ab.length)html+=activityChart(ab,'Брошено за период',k);
+  if(k!=='songs'){
+   const withSpan=fin.filter(f=>f.startMs!=null);
+   html+='<section class="st-card"><h3>Время от начала до завершения</h3><p class="st-note">Интервал между отметкой «Сейчас читаю/смотрю» и завершением. Это не время непрерывного чтения или просмотра.</p>';
+@@ -1360,7 +1420,7 @@
+   if(days.length)html+='<section class="st-card"><h3>Самые активные дни</h3>'+days.map(([d,c])=>'<button type="button" class="day-row" data-day="'+d+'"><span>'+new Date(d).toLocaleDateString('ru-RU',{weekday:'short',day:'numeric',month:'long',year:'numeric'})+'</span><b>'+c+'</b></button>').join('')+'</section>';
+  }
+  if(A.cancelledFinishes.some(inP))html+='<p class="st-note">Отменённые позже отметки завершения в подсчёт не входят, но остаются в истории.</p>';
+- body.innerHTML=html;
++ return html;
+ }
+ function renderStats(){
+  for(const b of document.querySelectorAll('#stats-mode button'))b.setAttribute('aria-selected',String(b.dataset.m===statsMode));
+@@ -1368,9 +1428,10 @@
+  for(const b of segStats.querySelectorAll('button'))b.setAttribute('aria-selected',String(b.dataset.k===statsKind));
+  segStats.hidden=false;
+  if(statsMode==='activity')renderActivity();else renderCollection();
++ scheduleSheetGhosts('stats');
+ }
+ document.getElementById('stats-body').addEventListener('click',e=>{
+- const day=e.target.closest('.day-row');if(day){periodType='day';periodAnchor=new Date(+day.dataset.day);renderStats();sheets.stats.querySelector('.sheet-body').scrollTop=0;return;}
++ const day=e.target.closest('.day-row');if(day){periodType='day';periodAnchorAuto=false;periodAnchor=new Date(+day.dataset.day);renderStats();sheets.stats.querySelector('.sheet-body').scrollTop=0;return;}
+  const row=e.target.closest('.span-row');if(!row)return;
+  openWorkHistory(row.dataset.section,row.dataset.work);
+ });
+@@ -1380,10 +1441,11 @@
+  const parts=[];for(const chunk of String(raw||'Не указано').split(/\s*,\s*/)){const m=chunk.split(/\s+и\s+/);if(m.length===2&&m.every(x=>/\s/.test(x.trim())))parts.push(...m);else parts.push(chunk);}return parts.map(s=>s.trim()).filter(Boolean);
+ }
+ function renderCollection(){
+- for(const b of segStats.querySelectorAll('button'))b.setAttribute('aria-selected',String(b.dataset.k===statsKind));
+- const k=statsKind,list=data[k],total=list.length,done=countField(k,progressField[k]),abandoned=countField(k,'abandoned');
+- const body=document.getElementById('stats-body');
+- sheets.stats.dataset.kind=k;
++ sheets.stats.dataset.kind=statsKind;
++ document.getElementById('stats-body').innerHTML=collectionHTML(statsKind);
++}
++function collectionHTML(k){
++ const list=data[k],total=list.length,done=countField(k,progressField[k]),abandoned=countField(k,'abandoned');
+  const tiles=[['Всего',total]];
+  if(k==='books')tiles.push(['Прочитано',done],['Сейчас читаю',countField(k,'reading')],['Не прочитано',total-done-countField(k,'reading')-abandoned],['Скачано',countField(k,'downloaded')]);
+  if(k!=='books'&&countField(k,'downloaded'))tiles.push(['Скачано',countField(k,'downloaded')]);
+@@ -1405,7 +1467,7 @@
+  if(k==='songs'){const cats=group(list,d=>d.genre||'Не указано',k);html+='<section class="st-card"><h3>Разделы плейлиста</h3>'+legend+barRows(cats)+'</section>';}
+  const who=k==='books'?'Авторы':k==='films'?'Режиссёры':'Исполнители';
+  html+='<section class="st-card"><h3>'+who+'</h3><p class="st-note">'+fmt(people.length)+' '+(k==='books'?'авторов':k==='films'?'режиссёров':'исполнителей')+'; больше одного произведения у '+repeated.length+'. Совместные работы учтены у каждого соавтора.</p>'+legend+barRows(repeated.length?repeated:people.slice(0,12),{limit:12})+(repeated.length&&people.length>repeated.length?'<details class="more-rows"><summary>Остальные ('+(people.length-repeated.length)+', по одному произведению)</summary><p class="st-names">'+people.filter(p=>p.total===1).map(p=>esc(p.key)+(p.done?' ✓':p.abandoned?' · брошено':'')).join(' · ')+'</p></details>':'')+'</section>';
+- body.innerHTML=html;
++ return html;
+ }
+ 
+ for(const seg of document.querySelectorAll('.seg'))seg.addEventListener('keydown',e=>{
+@@ -1423,16 +1485,16 @@
+  const now=new Date(),d=new Date(ms);
+  if(dayKey(ms)===dayKey(now.getTime()))return 'Сегодня';
+  const y=new Date(now);y.setDate(now.getDate()-1);if(dayKey(ms)===dayKey(y.getTime()))return 'Вчера';
+- return d.toLocaleDateString('ru-RU',{day:'numeric',month:'long',year:d.getFullYear()===now.getFullYear()?undefined:'numeric'});
++ return (d.getFullYear()===now.getFullYear()?dateFmt.dayLong:dateFmt.dayLongYear).format(d);
+ }
+-const timeOf=ms=>new Date(ms).toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});
++const timeOf=ms=>dateFmt.time.format(ms);
+ function filteredEvents(){return history.events.filter(e=>e.section===historyFilter);}
+ let historyLastDay=null;
+-function historyRows(events,from,to){
++function historyRows(events,from,to,cursor={get day(){return historyLastDay;},set day(v){historyLastDay=v;}}){
+  let html='';
+  for(let i=from;i<to;i++){
+   const ev=events[events.length-1-i],dk=dayKey(ev.ms);
+-  if(dk!==historyLastDay){html+='<h3 class="h-day">'+dayLabel(ev.ms)+'</h3>';historyLastDay=dk;}
++  if(dk!==cursor.day){html+='<h3 class="h-day">'+dayLabel(ev.ms)+'</h3>';cursor.day=dk;}
+   const canGo=ev.action!=='reset',tag=canGo?'button':'div';
+   html+='<'+tag+(canGo?' type="button"':'')+' class="h-row" data-section="'+ev.section+'" data-work="'+esc(ev.work)+'"><span class="h-ico">'+MINI[ev.section]+'</span><span class="h-text">'+esc(describe(ev))+'</span><time datetime="'+esc(ev.at||new Date(ev.ms).toISOString())+'">'+timeOf(ev.ms)+'</time></'+tag+'>';
+  }
+@@ -1445,15 +1507,24 @@
+  const events=filteredEvents();historyShown=0;historyLastDay=null;
+  historyObserver?.disconnect();
+  if(!events.length){
+-  const dl=data.books.filter(d=>d.downloaded).length;
+-  const marked=kinds.some(k=>fields[k].some(f=>countField(k,f)>(k==='books'&&f==='downloaded'?dl:0)));
+-  body.innerHTML='<div class="h-empty"><div class="h-empty-icons">'+MINI.books+MINI.films+MINI.songs+'</div><p>'+(history.events.length?'В этом разделе событий пока нет.':'Здесь появятся ваши действия: начатые и прочитанные книги, просмотренные фильмы, прослушанные песни.')+'</p>'+(marked&&!history.events.length?'<p class="h-hint">Отметки, сделанные до появления истории, сохранены без дат — история начнётся со следующего действия.</p>':'')+'</div>';
+-  more.textContent='';return;
++  body.innerHTML=emptyHistoryHTML();
++  more.textContent='';scheduleSheetGhosts('history');return;
+  }
+  body.innerHTML='';appendHistory(events);
+  if(!('IntersectionObserver' in window)){while(historyShown<events.length)appendHistory(events);return;}
+  historyObserver=new IntersectionObserver(en=>{if(en.some(x=>x.isIntersecting))appendHistory(filteredEvents());},{root:sheets.history.querySelector('.sheet-body'),rootMargin:'600px'});
+  historyObserver.observe(more);
++ scheduleSheetGhosts('history');
++}
++function emptyHistoryHTML(){
++ const dl=data.books.filter(d=>d.downloaded).length;
++ const marked=kinds.some(k=>fields[k].some(f=>countField(k,f)>(k==='books'&&f==='downloaded'?dl:0)));
++ return '<div class="h-empty"><div class="h-empty-icons">'+MINI.books+MINI.films+MINI.songs+'</div><p>'+(history.events.length?'В этом разделе событий пока нет.':'Здесь появятся ваши действия: начатые и прочитанные книги, просмотренные фильмы, прослушанные песни.')+'</p>'+(marked&&!history.events.length?'<p class="h-hint">Отметки, сделанные до появления истории, сохранены без дат — история начнётся со следующего действия.</p>':'')+'</div>';
++}
++// Первая страница истории категории без изменения состояния текущего экрана (для свайпа).
++function historyPreviewHTML(k){
++ const events=history.events.filter(e=>e.section===k);
++ return events.length?historyRows(events,0,Math.min(events.length,80),{day:null}):emptyHistoryHTML();
+ }
+ function appendHistory(events){
+  const more=document.getElementById('history-more');
+@@ -1467,6 +1538,8 @@
+ document.getElementById('history-body').addEventListener('click',e=>{
+  const row=e.target.closest('button.h-row');if(!row)return;
+  showWorkHistory(row.dataset.section,row.dataset.work);
++ // CP20: системная кнопка «Назад» из записи возвращает к списку, а не закрывает историю.
++ if(historyWork)try{const st=window.history.state;window.history.pushState({sheet:'history',work:historyWork,depth:(st?.depth||1)+1,pushed:true},'',location.href);}catch(e){}
+ });
+ let historyWork=null;
+ const statusNames={unread:'Не прочитано',reading:'Сейчас читаю',read:'Прочитано',unseen:'Не просмотрено',watching:'Сейчас смотрю',seen:'Просмотрено'};
+@@ -1476,7 +1549,7 @@
+ }
+ function showWorkHistory(k,id){
+  const d=idmap[k].get(String(id));if(!d)return;
+- historyFilter=k;sheets.history.dataset.kind=k;historyObserver?.disconnect();historyWork={k,id:String(id)};
++ historyFilter=k;sheets.history.dataset.kind=k;historyObserver?.disconnect();historyWork={k,id:String(id)};clearSheetGhosts('history');
+  const evs=history.events.filter(e=>e.section===k&&e.work===String(id));
+  const A=activityData(),finishes=A.finishes.filter(f=>f.section===k&&f.work===String(id));
+  const box=document.getElementById('history-work');
+@@ -1503,6 +1576,7 @@
+ function openWorkHistory(k,id){
+  // Из статистики: открыть экран истории сразу на нужной записи.
+  hideSheetNow();openSheet('history');showWorkHistory(k,id);
++ if(historyWork)try{const st=window.history.state;window.history.replaceState({sheet:'history',work:historyWork,depth:st?.depth||1},'',location.href);}catch(e){}
+ }
+ 
+ /* ---- Настройки ---- */
+@@ -1549,6 +1623,7 @@
+  const f=single.querySelector('#focus');f.className='focus collapsed';f.removeAttribute('data-sig');f.removeAttribute('aria-hidden');
+  for(const id of ['focus-kicker','focus-title','focus-sub','focus-count','eyebrow','title','lead'])single.querySelector('#'+id).textContent='';
+  for(const s of clone.querySelectorAll('.sheet')){s.classList.remove('open');s.hidden=true;s.setAttribute('hidden','');}
++ for(const g of clone.querySelectorAll('.sheet-ghost-layer'))g.remove();
+  for(const id of ['stats-body','history-body','history-more','history-work'])clone.querySelector('#'+id).replaceChildren();
+  clone.classList.remove('sheet-open','theme-ready','vt-theme');clone.querySelector('.nav').removeAttribute('inert');clone.querySelector('#quick-next').removeAttribute('inert');
+  clone.querySelector('#more-panel').classList.remove('open');clone.querySelector('#more-toggle').setAttribute('aria-expanded','false');
+@@ -1638,7 +1713,7 @@
+  const c=tabColors[p>=.5?end:start];glider.style.setProperty('--pill-border',c.edge);glider.style.setProperty('--pill-bg',c.fill);
+  focusTab(p>=.5?end:start);
+ }
+-window.addEventListener('resize',()=>{if(!sectionTransition)glideTo(kind,kind,1,true);},{passive:true});
++window.addEventListener('resize',()=>{if(!sectionTransition)glideTo(kind,kind,1,true);if(openSheetName==='stats'||openSheetName==='history'){if(!sheetMotion[openSheetName])scheduleSheetGhosts(openSheetName);}},{passive:true});
+ let sectionTransition=null,pendingTarget=null,gesture=null;
+ const savedScroll={books:0,films:0,songs:0};
+ const SLIDE_MS=325;
+@@ -1683,6 +1758,8 @@
+  panels[chosen].classList.add('current');
+  for(const k of [m.from,m.target]){panels[k].inert=k!==chosen;panels[k].setAttribute('aria-hidden',String(k!==chosen));}
+  stage.classList.remove('is-transitioning');stage.style.height='';
++ // CP20: смена html[data-kind] до чтения геометрии — один пересчёт стилей вместо двух полных.
++ if(committed)document.documentElement.dataset.kind=chosen;
+  if(committed)window.scrollTo({top:savedScroll[chosen],behavior:'instant'});
+  glideTo(chosen,chosen,1,true);glider.classList.remove('is-dragging');
+  sectionTransition=null;kind=chosen;
+@@ -1756,7 +1833,7 @@
+  if(e.cancelable)e.preventDefault();
+  const now=performance.now(),dt=Math.max(8,now-g.lastT);
+  g.velocity=.65*g.velocity+.35*((t.clientX-g.lastX)/dt);g.lastX=t.clientX;g.lastT=now;
+- const m=g.motion;if(m)paintMotion(m,g.anchor-(dx/g.width)*m.direction);
++ const m=g.motion;if(m&&sectionTransition===m)paintMotion(m,g.anchor-(dx/g.width)*m.direction);
+ },{passive:false,capture:true});
+ document.addEventListener('touchend',e=>{
+  const g=gesture;if(!g)return;
+@@ -1786,11 +1863,13 @@
+ 
+ /* CP19: независимая навигация статистики и истории. */
+ function catalogKindForSheet(){
+- const requested=pendingTarget||sectionTransition?.target||kind;
++ // CP20: отменённый жест (возврат к исходному каталогу) не должен переключать каталог.
++ const m=sectionTransition,commit=Boolean(m&&(!m.settling||m.settleDestination));
++ const requested=pendingTarget||(m?(commit?m.target:m.from):kind);
+  const selected=kinds.includes(requested)?requested:(kinds.includes(kind)?kind:'books');
+  // Зафиксировать уже выбранный каталог до создания записи истории модального экрана.
+- if(sectionTransition){
+-  pendingTarget=null;endMotion(sectionTransition,true);
++ if(m){
++  pendingTarget=null;endMotion(m,commit);
+   if(kind!==selected){const motion=makeMotion(selected);if(motion)endMotion(motion,true);}
+  }
+  return selected;
+@@ -1799,6 +1878,7 @@
+ function switchSheetKind(name,target){
+  if(!['stats','history'].includes(name)||!kinds.includes(target)||openSheetName!==name)return;
+  if(name==='history'&&historyWork)return;
++ abortSheetMotion(name);
+  const previous=name==='stats'?statsKind:historyFilter;
+  if(previous===target)return;
+  const sheet=sheets[name],body=sheet.querySelector('.sheet-body');
+@@ -1815,45 +1895,165 @@
+   sheetNavAnimations[name]=content.animate([{opacity:.65,transform:'translateX('+offset+'px)'},{opacity:1,transform:'translateX(0)'}],{duration:160,easing:'ease-out'});
+  }
+ }
++/* CP20: свайп статистики и истории ведёт содержимое за пальцем.
++   Соседняя категория отрисовывается один раз в момент фиксации горизонтального жеста
++   в отдельный слой; во время движения меняются только transform двух слоёв (без перерасчёта геометрии).
++   Вертикальная прокрутка — нативная (touch-action:pan-y). */
++const sheetMotion={stats:null,history:null};
++const SHEET_SLIDE_MS=300;
++const sheetKindOf=name=>name==='stats'?statsKind:historyFilter;
++const sheetContent=name=>document.getElementById(name==='stats'?'stats-body':'history-body');
++function previewSheetSeg(name,k){for(const b of (name==='stats'?segStats:segHistory).querySelectorAll('button[data-k]'))b.setAttribute('aria-selected',String(b.dataset.k===k));}
++// Соседние категории строятся заранее, в простое после каждой отрисовки, в отдельном обрезающем слое
++// поверх тела экрана (вне его прокрутки). В момент фиксации жеста остаётся только менять transform.
++const ghostLayers={},ghostCache={stats:new Map(),history:new Map()},ghostIdle={stats:0,history:0};
++const idleTask=window.requestIdleCallback?(f=>requestIdleCallback(f,{timeout:1200})):(f=>setTimeout(f,120));
++const cancelIdleTask=window.cancelIdleCallback?(id=>cancelIdleCallback(id)):(id=>clearTimeout(id));
++function ghostLayer(name){
++ let layer=ghostLayers[name];
++ if(!layer){layer=ghostLayers[name]=document.createElement('div');layer.className='sheet-ghost-layer';layer.setAttribute('aria-hidden','true');layer.inert=true;sheets[name].querySelector('.sheet-panel').append(layer);}
++ const body=sheets[name].querySelector('.sheet-body');layer.style.top=body.offsetTop+'px';layer.style.height=body.clientHeight+'px';
++ return layer;
++}
++function buildGhost(name,k){
++ const body=sheets[name].querySelector('.sheet-body'),content=sheetContent(name),layer=ghostLayer(name);
++ const ghost=document.createElement('div');ghost.className='sheet-ghost';ghost.dataset.kind=k;
++ ghost.innerHTML=name==='stats'?(statsMode==='activity'?activityHTML(k):collectionHTML(k)):historyPreviewHTML(k);
++ ghost.style.left=content.offsetLeft+'px';ghost.style.width=content.offsetWidth+'px';
++ ghost.style.transform='translate3d('+(2*body.clientWidth)+'px,0,0)';
++ layer.append(ghost);
++ const entry={ghost,height:ghost.offsetHeight,width:content.offsetWidth};ghostCache[name].set(k,entry);return entry;
++}
++function clearSheetGhosts(name){
++ cancelIdleTask(ghostIdle[name]);ghostIdle[name]=0;
++ const keep=sheetMotion[name]?.ghost;
++ for(const [k,e] of ghostCache[name])if(e.ghost!==keep){e.ghost.remove();ghostCache[name].delete(k);}
++}
++function scheduleSheetGhosts(name){
++ clearSheetGhosts(name);
++ if(openSheetName!==name||wantsLessMotion()||(name==='history'&&historyWork))return;
++ // По одной категории на задачу простоя: следующее касание не ждёт сборки обеих.
++ const step=()=>{
++  ghostIdle[name]=0;if(openSheetName!==name||sheetMotion[name]||(name==='history'&&historyWork))return;
++  const i=kinds.indexOf(sheetKindOf(name)),k=[kinds[i+1],kinds[i-1]].find(x=>x&&!ghostCache[name].has(x));
++  if(!k)return;buildGhost(name,k);ghostIdle[name]=idleTask(step);
++ };
++ ghostIdle[name]=idleTask(step);
++}
++function beginSheetMotion(name,target){
++ const body=sheets[name].querySelector('.sheet-body'),content=sheetContent(name),from=sheetKindOf(name);
++ sheetNavAnimations[name]?.cancel();
++ const m={name,from,target,body,content,ghost:null,width:Math.max(1,body.clientWidth),direction:target&&kinds.indexOf(target)>kinds.indexOf(from)?1:-1,progress:0,offset:0,raf:0,settling:false,dest:false,top:body.scrollTop,newTop:body.scrollTop,ghostY:0,shown:from};
++ if(target){
++  let entry=ghostCache[name].get(target);
++  if(!entry||entry.width!==content.offsetWidth){entry?.ghost.remove();entry=buildGhost(name,target);}
++  else ghostLayer(name);
++  // Слой сразу ставится туда, где окажется после смены: позиция прокрутки ограничивается высотой нового содержимого.
++  const contentHeight=content.offsetHeight,oldHeight=body.scrollHeight;
++  m.newTop=Math.min(m.top,Math.max(0,oldHeight-contentHeight+entry.height-body.clientHeight));
++  m.ghostY=content.offsetTop-m.newTop;m.ghost=entry.ghost;
++ }
++ body.classList.add('is-swiping');
++ sheetMotion[name]=m;paintSheet(m,0);return m;
++}
++function paintSheet(m,value){
++ if(!m.target){m.offset=value;m.content.style.transform='translate3d('+value+'px,0,0)';return;}
++ const p=clamp(value),d=m.direction,W=m.width;m.progress=p;
++ m.content.style.transform='translate3d('+(-d*p*W)+'px,0,0)';
++ m.ghost.style.transform='translate3d('+(d*(1-p)*W)+'px,'+m.ghostY+'px,0)';
++ const shown=p>=.5?m.target:m.from;if(shown!==m.shown){m.shown=shown;previewSheetSeg(m.name,shown);}
++}
++function finishSheetMotion(m,commit){
++ if(sheetMotion[m.name]!==m)return;
++ cancelAnimationFrame(m.raf);sheetMotion[m.name]=null;
++ const {name,body,content}=m;
++ if(m.ghost){m.ghost.remove();ghostCache[name].delete(m.target);}
++ content.style.transform='';body.classList.remove('is-swiping');
++ if(commit&&m.target&&openSheetName===name&&!(name==='history'&&historyWork)){
++  const hadTabFocus=(name==='stats'?segStats:segHistory).contains(document.activeElement);
++  if(name==='stats'){statsKind=m.target;renderStats();}else{historyFilter=m.target;renderHistory();}
++  body.scrollTop=m.newTop;
++  if(hadTabFocus)(name==='stats'?segStats:segHistory).querySelector('[aria-selected="true"]')?.focus({preventScroll:true});
++ }else{previewSheetSeg(name,sheetKindOf(name));if(m.target)scheduleSheetGhosts(name);}
++}
++function abortSheetMotion(name){for(const n of name?[name]:['stats','history'])if(sheetMotion[n])finishSheetMotion(sheetMotion[n],false);}
++// Завершение продолжает движение со скоростью пальца (ease-out quad: начальная скорость = 2·путь/время),
++// поэтому в момент отпускания нет ни рывка вперёд, ни остановки.
++const easeSettle=t=>1-(1-t)*(1-t);
++function settleSheet(m,commit,speed=0){
++ if(sheetMotion[m.name]!==m)return;
++ cancelAnimationFrame(m.raf);m.settling=true;m.dest=commit;
++ const from=m.target?m.progress:m.offset,to=m.target?(commit?1:0):0;
++ const px=m.target?Math.abs(to-from)*m.width:Math.abs(from);
++ if(wantsLessMotion()||px<1){paintSheet(m,to);finishSheetMotion(m,commit);return;}
++ const duration=m.target?clamp(2*px/Math.max(.55,speed),140,SHEET_SLIDE_MS+60):200,started=performance.now();
++ const frame=now=>{
++  if(sheetMotion[m.name]!==m||!m.settling)return;
++  const t=clamp((now-started)/duration);paintSheet(m,from+(to-from)*easeSettle(t));
++  if(t>=1){finishSheetMotion(m,commit);return;}
++  m.raf=requestAnimationFrame(frame);
++ };
++ m.raf=requestAnimationFrame(frame);
++}
+ for(const name of ['stats','history']){
+  const body=sheets[name].querySelector('.sheet-body');
+  let swipe=null;
+- const blocked=target=>{
+-  if(!(target instanceof Element))return true;
+-  // По строке истории можно свайпнуть; короткое касание по-прежнему открывает запись.
+-  if(name==='history'&&target.closest('button.h-row'))return false;
+-  return target.closest('button,a,input,select,textarea,summary,details,svg,canvas,[contenteditable],[role="slider"],[role="application"],[data-no-swipe]');
+- };
++ const blocked=target=>!(target instanceof Element)||Boolean(target.closest('.seg,.period-nav,input,select,textarea,summary,a[href],canvas,svg.ac-chart,svg.year-strip,[contenteditable],[role="slider"],[role="application"],[data-no-swipe]'));
+  body.addEventListener('touchstart',e=>{
+-  swipe=null;
+-  if(openSheetName!==name||e.touches.length!==1||blocked(e.target)||(name==='history'&&historyWork))return;
++  const previous=swipe;swipe=null;
++  if(e.touches.length!==1){if(previous?.motion)settleSheet(previous.motion,false);return;}
++  if(openSheetName!==name||(name==='history'&&historyWork))return;
++  const running=sheetMotion[name];
++  if(!running&&blocked(e.target))return;
+   const t=e.touches[0];
+-  swipe={id:t.identifier,x:t.clientX,y:t.clientY,top:body.scrollTop,time:performance.now(),from:name==='stats'?statsKind:historyFilter};
++  // Палец может перехватить ещё не завершённое движение и продолжить его без скачка.
++  if(running){cancelAnimationFrame(running.raf);running.settling=false;}
++  swipe={id:t.identifier,x:t.clientX,y:t.clientY,lastX:t.clientX,lastT:e.timeStamp,t0:e.timeStamp,velocity:0,locked:false,motion:running||null,anchor:running?(running.target?running.progress:running.offset):0,resume:running?running.dest:false,reduced:wantsLessMotion(),dx:0,startX:t.clientX,pending:false};
+  },{passive:true});
++ const paintPending=()=>{const g=swipe;if(!g)return;g.pending=false;const m=g.motion;if(!m||sheetMotion[name]!==m)return;
++  if(m.target)paintSheet(m,g.anchor-(g.dx/m.width)*m.direction);
++  else{const raw=g.anchor+g.dx,sign=Math.sign(raw),a=Math.abs(raw);paintSheet(m,sign*Math.min(56,a*.28));}};
+  body.addEventListener('touchmove',e=>{
+   const g=swipe;if(!g)return;
+-  if(e.touches.length!==1){swipe=null;return;}
+-  const t=e.touches[0];if(t.identifier!==g.id){swipe=null;return;}
++  if(e.touches.length!==1){swipe=null;if(g.motion)settleSheet(g.motion,g.motion.target?g.motion.progress>=.5:false);return;}
++  const t=e.touches[0];if(t.identifier!==g.id)return;
+   const dx=t.clientX-g.x,dy=t.clientY-g.y;
+-  if(Math.abs(body.scrollTop-g.top)>4||Math.abs(dy)>Math.max(10,Math.abs(dx)/2)){swipe=null;return;}
+-  if(Math.abs(dx)<18)return;
+-  const target=kinds[kinds.indexOf(g.from)+(dx<0?1:-1)];
+-  if(!target){swipe=null;return;}
+-  if(e.cancelable)e.preventDefault();
++  if(!g.locked){
++   if(Math.abs(dy)>Math.max(8,Math.abs(dx))||!e.cancelable){swipe=null;if(g.motion)settleSheet(g.motion,g.resume);return;}
++   if(Math.abs(dx)<10||Math.abs(dx)<Math.abs(dy)*1.3)return;
++   g.locked=true;
++   if(!g.motion&&!g.reduced){const target=kinds[kinds.indexOf(sheetKindOf(name))+(dx<0?1:-1)]||null;g.motion=beginSheetMotion(name,target);}
++   // Порог фиксации не должен давать рывок: движение отсчитывается от точки фиксации.
++   g.x=t.clientX;g.lastX=t.clientX;
++  }
++  e.preventDefault();
++  // Время события, а не обработчика: при занятом потоке скорость пальца не занижается.
++  const now=e.timeStamp,dt=Math.max(8,now-g.lastT);
++  g.velocity=.65*g.velocity+.35*((t.clientX-g.lastX)/dt);g.lastX=t.clientX;g.lastT=now;g.dx=t.clientX-g.x;
++  if(!g.pending&&g.motion){g.pending=true;requestAnimationFrame(paintPending);}
+  },{passive:false});
+  body.addEventListener('touchend',e=>{
+-  const g=swipe;swipe=null;if(!g||e.touches.length||openSheetName!==name)return;
+-  const t=[...e.changedTouches].find(t=>t.identifier===g.id);if(!t)return;
+-  const dx=t.clientX-g.x,dy=t.clientY-g.y;
+-  const minimum=Math.max(56,Math.min(96,body.clientWidth*.16));
+-  if(performance.now()-g.time>1000||Math.abs(body.scrollTop-g.top)>4||Math.abs(dx)<minimum||Math.abs(dy)>32||Math.abs(dx)<Math.abs(dy)*2)return;
+-  if((name==='stats'?statsKind:historyFilter)!==g.from)return;
+-  const target=kinds[kinds.indexOf(g.from)+(dx<0?1:-1)];if(!target)return;
++  const g=swipe;if(!g)return;
++  if(![...e.changedTouches].some(t=>t.identifier===g.id))return;
++  swipe=null;
++  if(!g.locked){if(g.motion)settleSheet(g.motion,g.resume);return;}
+   if(e.cancelable)e.preventDefault();
+   completedSwipe={time:performance.now()};
+-  switchSheetKind(name,target);
++  const t=[...e.changedTouches].find(t=>t.identifier===g.id);
++  if(g.reduced||!g.motion){
++   // Сниженная анимация: без движения содержимого, переключение по завершённому жесту.
++   if(g.motion){settleSheet(g.motion,false);return;}
++   const dx=t.clientX-g.startX,target=kinds[kinds.indexOf(sheetKindOf(name))+(dx<0?1:-1)];
++   if(target&&Math.abs(dx)>=Math.max(48,body.clientWidth*.14))switchSheetKind(name,target);
++   return;
++  }
++  const m=g.motion;g.dx=t.clientX-g.x;paintPending();
++  if(!m.target){settleSheet(m,false);return;}
++  const forward=-g.velocity*m.direction,travel=-(t.clientX-g.startX)*m.direction,average=travel/Math.max(16,e.timeStamp-g.t0);
++  const commit=(m.progress>=.4&&forward>-.3)||(forward>.35&&m.progress>.06)||(travel>=48&&average>=.3&&forward>-.1);
++  settleSheet(m,commit,Math.abs(g.velocity));
+  },{passive:false});
+- body.addEventListener('touchcancel',()=>{swipe=null;},{passive:true});
++ body.addEventListener('touchcancel',()=>{const g=swipe;swipe=null;if(g?.motion)settleSheet(g.motion,g.motion.target?g.locked?g.motion.progress>=.5:g.resume:false);},{passive:true});
+ }
+ 
+ /* ================= Запуск ================= */
+@@ -1867,7 +2067,10 @@
+ document.getElementById('csv').hidden=initialKind!=='songs';
+ glideTo(initialKind,initialKind,1,true);
+ if(storageNotice)requestAnimationFrame(()=>note(storageNotice));
+-if(sheets[window.history.state?.sheet])openSheet(window.history.state.sheet,false);
++// CP20: первые карточки двух других каталогов строятся в простое, а не в момент первого свайпа.
++{const idle=window.requestIdleCallback?f=>requestIdleCallback(f,{timeout:2500}):f=>setTimeout(f,400);
++ for(const k of kinds)if(k!==initialKind)idle(()=>{if(!rendered[k]&&filterMode[k]==='all'&&!sectionTransition)addBatch(k,24);});}
++if(sheets[window.history.state?.sheet]){const st=window.history.state;openSheet(st.sheet,false);if(st.sheet==='history'&&st.work)showWorkHistory(st.work.k,st.work.id);}
+ window.__collections={state:()=>state,history:()=>history,nextTarget,data};
+ })();
+ </script>

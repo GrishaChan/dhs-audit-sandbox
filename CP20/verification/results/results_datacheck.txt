@@ -1,0 +1,10 @@
+data-books: byte-identical=True sha=45e347bcca1f1a05
+data-films: byte-identical=True sha=83d844ad66d8d9f0
+data-songs: byte-identical=True sha=f3f5b68c94fee3ea
+boot: byte-identical=True sha=d9626d6876ab1d39
+books: records 496/496 ids+order equal=True all-fields equal=True
+films: records 500/500 ids+order equal=True all-fields equal=True
+songs: records 500/500 ids+order equal=True all-fields equal=True
+approved icons ART_IMG+MINI byte-identical: True
+downloaded books (embedded field / boot map): 201 / 201
+RESULT: PASS
